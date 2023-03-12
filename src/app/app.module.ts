@@ -18,6 +18,7 @@ import { TennisPageComponent } from './components/tennis-page/tennis-page.compon
 import { HandballPageComponent } from './components/handball-page/handball-page.component';
 import { VolleyballPageComponent } from './components/volleyball-page/volleyball-page.component';
 import { KaratePageComponent } from './components/karate-page/karate-page.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { KaratePageComponent } from './components/karate-page/karate-page.compon
     TennisPageComponent,
     HandballPageComponent,
     VolleyballPageComponent,
-    KaratePageComponent ,
+    KaratePageComponent,
+    LoginComponent ,
 ],
   imports: [
     BrowserModule,

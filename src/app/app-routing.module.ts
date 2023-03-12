@@ -5,6 +5,7 @@ import { ContactPageComponent } from './components/contact-page/contact-page.com
 import { HandballPageComponent } from './components/handball-page/handball-page.component';
 import { HomeComponent } from './components/home/home.component';
 import { KaratePageComponent } from './components/karate-page/karate-page.component';
+import { LoginComponent } from './components/login/login.component';
 import { TennisPageComponent } from './components/tennis-page/tennis-page.component';
 import { VolleyballPageComponent } from './components/volleyball-page/volleyball-page.component';
 
@@ -15,6 +16,8 @@ const routes: Routes = [
   {path : "Tennis" , component:TennisPageComponent},
   {path : "Volleyball" , component:VolleyballPageComponent},
   {path : "Karaté" , component:KaratePageComponent},
+
+  {path : "Login" , component:LoginComponent},
 
   {path : "Handball" , component:HandballPageComponent},
 
