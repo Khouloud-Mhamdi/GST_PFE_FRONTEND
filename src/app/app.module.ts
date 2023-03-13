@@ -18,6 +18,7 @@ import { TennisPageComponent } from './components/tennis-page/tennis-page.compon
 import { HandballPageComponent } from './components/handball-page/handball-page.component';
 import { VolleyballPageComponent } from './components/volleyball-page/volleyball-page.component';
 import { KaratePageComponent } from './components/karate-page/karate-page.component';
+import { LoginComponent } from './components/login/login.component';
 import { AproposPageComponent } from './components/apropos-page/apropos-page.component';
 import { SignupPageComponent } from './components/signup-page/signup-page.component';
 import { EventPageComponent } from './components/event-page/event-page.component';
@@ -42,10 +43,11 @@ import { EventPageComponent } from './components/event-page/event-page.component
     HandballPageComponent,
     VolleyballPageComponent,
     KaratePageComponent,
+    LoginComponent ,
     AproposPageComponent,
     SignupPageComponent,
     EventPageComponent,
-  
+
 ],
   imports: [
     BrowserModule,
