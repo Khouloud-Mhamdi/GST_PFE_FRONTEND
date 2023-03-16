@@ -9,6 +9,7 @@ import { HomeComponent } from './components/home/home.component';
 import { KaratePageComponent } from './components/karate-page/karate-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupPageComponent } from './components/signup-page/signup-page.component';
+import { SingleEventComponent } from './components/single-event/single-event.component';
 import { TennisPageComponent } from './components/tennis-page/tennis-page.component';
 import { VolleyballPageComponent } from './components/volleyball-page/volleyball-page.component';
 
@@ -26,6 +27,7 @@ const routes: Routes = [
   {path : "apropos" , component: AproposPageComponent},
   {path : "signup" , component: SignupPageComponent},
   {path : "events" , component:EventPageComponent},
+  {path : "singleEvent" , component:SingleEventComponent},
 
 
 

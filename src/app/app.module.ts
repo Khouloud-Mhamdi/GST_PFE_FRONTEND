@@ -22,6 +22,7 @@ import { LoginComponent } from './components/login/login.component';
 import { AproposPageComponent } from './components/apropos-page/apropos-page.component';
 import { SignupPageComponent } from './components/signup-page/signup-page.component';
 import { EventPageComponent } from './components/event-page/event-page.component';
+import { SingleEventComponent } from './components/single-event/single-event.component';
 
 
 @NgModule({
@@ -47,6 +48,7 @@ import { EventPageComponent } from './components/event-page/event-page.component
     AproposPageComponent,
     SignupPageComponent,
     EventPageComponent,
+    SingleEventComponent,
 
 ],
   imports: [
