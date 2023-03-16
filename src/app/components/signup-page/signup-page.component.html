@@ -23,30 +23,71 @@
 
         <div class="accordion accordion-flush px-xl-5" id="faqlist">
 
-          <form>
+          <form [formGroup]="signupForm">
+            <!--Nom-->
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre nom ">
+                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre nom "  formControlName="nom">
               </div>
+              <div *ngIf="signupForm.controls['nom'].invalid && (
+                signupForm.controls['nom'].touched || signupForm.controls['nom'].dirty
+              )"> 
+                   <div *ngIf ="signupForm.controls['nom'].errors?.['required']" class="red"> Votre nom est obligatoire  </div>
+                   <div  *ngIf ="signupForm.controls['nom'].errors?.['minlength']" class="red"> Au mois 3 caractéres  </div>
+              </div>
+              <!--Prenom-->
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre Prenom ">
+                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre Prenom "  formControlName="prenom">
               </div>
+              <div *ngIf="signupForm.controls['prenom'].invalid && (
+                signupForm.controls['prenom'].touched || signupForm.controls['prenom'].dirty
+              )"> 
+                   <div *ngIf ="signupForm.controls['prenom'].errors?.['required']" class="red"> Votre prenom est obligatoire  </div>
+                   <div  *ngIf ="signupForm.controls['prenom'].errors?.['minlength']" class="red"> Au moins 3 caractére  </div>
+              </div>
+              <!--Email-->
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Entrez votre email">
+                <input type="email" class="form-control" id="inputEmail" placeholder="Entrez votre email"  formControlName="email">
               </div>
+              <div *ngIf="signupForm.controls['email'].invalid && (
+                signupForm.controls['email'].touched || signupForm.controls['email'].dirty
+              )"> 
+                   <div *ngIf ="signupForm.controls['email'].errors?.['required']" class="red"> Votre email est obligatoire </div>
+                   <div *ngIf ="signupForm.controls['email'].errors?.['email']" class="red"> email est incorrecte </div>
+                  
+              </div>
+              
+              <!--Password-->
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Mot de passe">
+                <input type="password" class="form-control" id="inputPassword" placeholder="Mot de passe"  formControlName="password">
               </div>
+              <div *ngIf="signupForm.controls['password'].invalid && (
+                signupForm.controls['password'].touched || signupForm.controls['password'].dirty
+              )"> 
+                   <div *ngIf ="signupForm.controls['password'].errors?.['required']" class="red"> Mot de passe obligatoire </div>
+                   <div *ngIf ="signupForm.controls['password'].errors?.['maxlength']" class="red"> Maximum 10 caractéres </div>
+                   <div *ngIf ="signupForm.controls['password'].errors?.['minlength']" class="red"> Au moins 5 caractéres </div>
+                  
+              </div>
+              <!--Confirm password -->
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Confirmez le mot de passe">
+                <input type="password" class="form-control" id="inputPasswordConfirm" placeholder="Confirmez le mot de passe" formControlName="confirm">
               </div>
+              <div *ngIf="signupForm.controls['confirm'].invalid && (
+                signupForm.controls['confirm'].touched || signupForm.controls['confirm'].dirty
+              )"> 
+                   <div *ngIf ="signupForm.controls['confirm'].errors?.['required']" class="red"> Veuillez confirmer votre mot de passe  </div>
+                   
+              </div>
+
             <div class="form-group text-center">
-            <button type="submit" class="btn btn-primary btn-block ">S'inscrire </button>
+            <button type="submit" class="btn btn-primary btn-block"  (click)="signup()">S'inscrire </button>
              </div>
+
           </form>
 
 

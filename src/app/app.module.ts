@@ -23,6 +23,8 @@ import { AproposPageComponent } from './components/apropos-page/apropos-page.com
 import { SignupPageComponent } from './components/signup-page/signup-page.component';
 import { EventPageComponent } from './components/event-page/event-page.component';
 import { SingleEventComponent } from './components/single-event/single-event.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from "@angular/common/http";
 
 
 @NgModule({
@@ -53,7 +55,12 @@ import { SingleEventComponent } from './components/single-event/single-event.com
 ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    
+
   ],
   providers: [],
   bootstrap: [AppComponent]

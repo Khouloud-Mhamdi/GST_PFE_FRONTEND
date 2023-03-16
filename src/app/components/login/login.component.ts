@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 
 @Component({
@@ -7,11 +8,19 @@ import { Title } from '@angular/platform-browser';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-
-  constructor(private titleService: Title) { }
+  loginForm !: FormGroup ; 
+  constructor(private titleService: Title ,private formBuilder : FormBuilder ) { }
 
   ngOnInit(): void {
     this.titleService.setTitle('Se connecter');
+    this.loginForm = this.formBuilder.group({
+      email : ["", [Validators.email]],
+      password : ["", [Validators.required ]], 
+     });
+  }
+  login () 
+  {
+
   }
 
 }
