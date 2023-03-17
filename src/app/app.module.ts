@@ -25,6 +25,7 @@ import { EventPageComponent } from './components/event-page/event-page.component
 import { SingleEventComponent } from './components/single-event/single-event.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
+import { ProfileComponent } from './components/profile/profile.component';
 
 
 @NgModule({
@@ -51,6 +52,7 @@ import { HttpClientModule } from "@angular/common/http";
     SignupPageComponent,
     EventPageComponent,
     SingleEventComponent,
+    ProfileComponent,
 
 ],
   imports: [

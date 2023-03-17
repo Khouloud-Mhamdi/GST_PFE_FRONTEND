@@ -13,6 +13,14 @@
     <div class="row gy-4">
 
       <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+          <!--alert de succée -->
+       <div class="alert alert-success" role="alert"  *ngIf="connect" >
+        <strong class="d-block d-sm-inline-block-force">Vous etes connecté ! </strong>
+      </div>
+       <!--alert alert d'erreur -->
+       <div class="alert alert-danger" role="alert"  *ngIf="erreur" >
+        <strong class="d-block d-sm-inline-block-force"> Veuillez vérifier vos champs  !  </strong>
+      </div>
 
         <div class="content px-xl-5">
           <h3> <strong>Connectez-vous</strong></h3>

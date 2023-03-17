@@ -1,0 +1,43 @@
+<section id="hero-animated" class="hero-animated d-flex align-items-center">
+    <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
+      <h2> Mon <span> Profil </span></h2>
+    </div>
+  </section>
+  
+ 
+<div class="container"  *ngIf="currentUser">
+    <div class="row justify-content-center mt-5">
+        <div class="col-lg-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">Mon profil </div>
+                <br> 
+                <div class="user-image d-flex justify-content-center align-items-center">
+                    <img src="assets/photosGST/user1.png" alt="Image d'utilisateur" width="60" height="60">
+                </div>
+                <div class="card-body">
+                    <!-- Formulaire de profil -->
+                    <form>
+                        <div class="form-group">
+                            <label for="nom">Nom</label>
+                            <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom" value="{{ currentUser.firstName }}">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="prenom">Prénom</label>
+                            <input type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom" value="{{ currentUser.lastName}}">
+                        </div>
+                        <br>
+                        <div class="form-group">
+                            <label for="email">Adresse e-mail</label>
+                            <input type="email" class="form-control" id="email" placeholder="Entrez votre adresse e-mail" value="{{ currentUser.email }}">
+                        </div>
+                        <br> 
+                        <button type="submit" class="btn btn-primary">Enregistrer</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

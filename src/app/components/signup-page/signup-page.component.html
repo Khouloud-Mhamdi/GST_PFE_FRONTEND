@@ -13,6 +13,18 @@
     <div class="row gy-4">
 
       <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
+       <!--alert de succée -->
+       <div class="alert alert-success" role="alert"  *ngIf="register" >
+        <strong class="d-block d-sm-inline-block-force">Vous etes inscrit ! </strong>
+      </div>
+       <!--alert alert d'erreur -->
+
+       <div class="alert alert-danger" role="alert"  *ngIf="erreur" >
+        <strong class="d-block d-sm-inline-block-force"> Veuillez vérifier vos champs !  </strong>
+      </div>
+
+
+
 
         <div class="content px-xl-5">
           <h3> <strong>Inscrivez-vous en un clic</strong></h3>
@@ -24,27 +36,27 @@
         <div class="accordion accordion-flush px-xl-5" id="faqlist">
 
           <form [formGroup]="signupForm">
-            <!--Nom-->
+            <!--firstName-->
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre nom "  formControlName="nom">
+                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre firstName "  formControlName="firstName">
               </div>
-              <div *ngIf="signupForm.controls['nom'].invalid && (
-                signupForm.controls['nom'].touched || signupForm.controls['nom'].dirty
+              <div *ngIf="signupForm.controls['firstName'].invalid && (
+                signupForm.controls['firstName'].touched || signupForm.controls['firstName'].dirty
               )"> 
-                   <div *ngIf ="signupForm.controls['nom'].errors?.['required']" class="red"> Votre nom est obligatoire  </div>
-                   <div  *ngIf ="signupForm.controls['nom'].errors?.['minlength']" class="red"> Au mois 3 caractéres  </div>
+                   <div *ngIf ="signupForm.controls['firstName'].errors?.['required']" class="red"> Votre nom est obligatoire  </div>
+                   <div  *ngIf ="signupForm.controls['firstName'].errors?.['minlength']" class="red"> Au mois 3 caractéres  </div>
               </div>
-              <!--Prenom-->
+              <!--lastName-->
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre Prenom "  formControlName="prenom">
+                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre lastName "  formControlName="lastName">
               </div>
-              <div *ngIf="signupForm.controls['prenom'].invalid && (
-                signupForm.controls['prenom'].touched || signupForm.controls['prenom'].dirty
+              <div *ngIf="signupForm.controls['lastName'].invalid && (
+                signupForm.controls['lastName'].touched || signupForm.controls['lastName'].dirty
               )"> 
-                   <div *ngIf ="signupForm.controls['prenom'].errors?.['required']" class="red"> Votre prenom est obligatoire  </div>
-                   <div  *ngIf ="signupForm.controls['prenom'].errors?.['minlength']" class="red"> Au moins 3 caractére  </div>
+                   <div *ngIf ="signupForm.controls['lastName'].errors?.['required']" class="red"> Votre prenom est obligatoire  </div>
+                   <div  *ngIf ="signupForm.controls['lastName'].errors?.['minlength']" class="red"> Au moins 3 caractére  </div>
               </div>
               <!--Email-->
               <div class="input-group mb-3">
