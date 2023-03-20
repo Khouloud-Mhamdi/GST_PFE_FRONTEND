@@ -4,6 +4,31 @@
     </div>
   </section>
   
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="alert alert-info confirmation-dialog" role="alert" *ngIf="showConfirmationDialog">
+          <h4 class="alert-heading">Confirmation</h4>
+          <p>Voulez-vous vraiment mettre à jour votre profil ?</p>
+          <hr>
+          <div class="button-container">
+            <button class="btn btn-secondary cancel-button" (click)="closeConfirmationDialog()">Annuler</button>
+            <button class="btn btn-primary confirm-button" (click)="EditCurrentUser()">mettre à jour</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--alert de succée -->
+  <div class="alert alert-success" role="alert"  *ngIf="update" >
+    <strong class="d-block d-sm-inline-block-force"> Votre profil est modifié </strong>
+  </div>
+   <!--alert alert d'erreur -->
+
+   <div class="alert alert-danger" role="alert"  *ngIf="erreur" >
+    <strong class="d-block d-sm-inline-block-force"> Veuillez vérifier vos champs !  </strong>
+  </div>
+
  
 <div class="container"  *ngIf="currentUser">
     <div class="row justify-content-center mt-5">
@@ -16,20 +41,20 @@
                 </div>
                 <div class="card-body">
                     <!-- Formulaire de profil -->
-                    <form>
+                    <form (ngSubmit)="openConfirmationDialog()">
                         <div class="form-group">
                             <label for="nom">Nom</label>
-                            <input type="text" class="form-control" id="nom" placeholder="Entrez votre nom" value="{{ currentUser.firstName }}">
+                            <input type="text" class="form-control"  id="nom" placeholder="Entrez votre nom"   [(ngModel)]="user.nom"  [ngModelOptions]="{standalone:true}" >
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="prenom">Prénom</label>
-                            <input type="text" class="form-control" id="prenom" placeholder="Entrez votre prénom" value="{{ currentUser.lastName}}">
+                            <input type="text" class="form-control"  id="prenom" placeholder="Entrez votre prénom"  [(ngModel)]="user.prenom" [ngModelOptions]="{standalone:true}" >
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="email">Adresse e-mail</label>
-                            <input type="email" class="form-control" id="email" placeholder="Entrez votre adresse e-mail" value="{{ currentUser.email }}">
+                            <input type="email" class="form-control"  id="email" placeholder="Entrez votre adresse e-mail"  [(ngModel)]="user.email" [ngModelOptions]="{standalone:true}" >
                         </div>
                         <br> 
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
