@@ -39,7 +39,7 @@
             <!--firstName-->
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre firstName "  formControlName="firstName">
+                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre nom "  formControlName="firstName">
               </div>
               <div *ngIf="signupForm.controls['firstName'].invalid && (
                 signupForm.controls['firstName'].touched || signupForm.controls['firstName'].dirty
@@ -50,7 +50,7 @@
               <!--lastName-->
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre lastName "  formControlName="lastName">
+                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre prenom "  formControlName="lastName">
               </div>
               <div *ngIf="signupForm.controls['lastName'].invalid && (
                 signupForm.controls['lastName'].touched || signupForm.controls['lastName'].dirty
@@ -74,7 +74,7 @@
               <!--Password-->
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                <input type="password" class="form-control" id="inputPassword" placeholder="Mot de passe"  formControlName="password">
+                <input type="password" class="form-control" id="inputPassword" placeholder=" Mot de passe"  formControlName="password">
               </div>
               <div *ngIf="signupForm.controls['password'].invalid && (
                 signupForm.controls['password'].touched || signupForm.controls['password'].dirty
@@ -93,6 +93,9 @@
                 signupForm.controls['confirm'].touched || signupForm.controls['confirm'].dirty
               )">
                    <div *ngIf ="signupForm.controls['confirm'].errors?.['required']" class="red"> Veuillez confirmer votre mot de passe  </div>
+                   <div *ngIf="signupForm.controls['confirm'].errors?.['noMatch']" class="red">
+                    Mot de passe non identique 
+                  </div>
 
               </div>
 

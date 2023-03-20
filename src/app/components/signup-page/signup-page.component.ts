@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from 'src/app/services/auth.service';
+import { mustMatch } from 'src/app/validators/mustMatch';
 
 @Component({
   selector: 'app-signup-page',
@@ -25,7 +26,11 @@ export class SignupPageComponent implements OnInit {
       email : ["", [Validators.email,Validators.required]],
       password : ["", [Validators.required , Validators.minLength(5) , Validators.maxLength(20)]],
       confirm : ["" , Validators.required]
-     });
+     },
+     {
+      validator: mustMatch("password", "confirm"),
+     }
+     );
   }
   signup(){
     /*console.log("test : ", this.signupForm.value.prenom)
