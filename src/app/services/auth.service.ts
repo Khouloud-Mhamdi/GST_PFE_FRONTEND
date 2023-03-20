@@ -26,10 +26,7 @@ export class AuthService {
     const url = `${this.userURL}/UpdateCurrentUser`;
     return this.http.put<any>(url, user);
   }
- /* getCurrentUserById(id: number): Observable<any> {
-    const url = `${this.userURL}/${id}`;
-    return this.http.get<any>(url);
-  }*/
+ 
  
   getCurrentUserById(id:number){
     return this.http.get(`${this.userURL}/${id}`)
