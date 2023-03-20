@@ -28,7 +28,7 @@ export class ForgotPasswordComponent implements OnInit {
 
     this.titleService.setTitle('Mot de passe oublié');
     this.loginForm = this.formBuilder.group({
-      email : ["", [Validators.email]],
+      email : ["", [Validators.email],[Validators.required]],
 
      });
 
@@ -43,20 +43,20 @@ export class ForgotPasswordComponent implements OnInit {
         {this.verrif=true;
           setTimeout(() => {
             this.verrif = false;
-          }, 4000);}   
+          }, 4000);}
 
           else{
             this.erreur=true;
           setTimeout(() => {
             this.erreur = false;
-          }, 3000);}       
-
-          
+          }, 3000);}
 
 
-       
+
+
+
       },
-     
+
     );
   }
 
