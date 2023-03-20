@@ -93,6 +93,9 @@
                 signupForm.controls['confirm'].touched || signupForm.controls['confirm'].dirty
               )">
                    <div *ngIf ="signupForm.controls['confirm'].errors?.['required']" class="red"> Veuillez confirmer votre mot de passe  </div>
+                   <div *ngIf="signupForm.controls['confirm'].errors?.['noMatch']" class="red">
+                    Mot de passe non identique 
+                  </div>
 
               </div>
 
