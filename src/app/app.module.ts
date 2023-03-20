@@ -26,6 +26,8 @@ import { SingleEventComponent } from './components/single-event/single-event.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from "@angular/common/http";
 import { ProfileComponent } from './components/profile/profile.component';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 
 @NgModule({
@@ -53,6 +55,8 @@ import { ProfileComponent } from './components/profile/profile.component';
     EventPageComponent,
     SingleEventComponent,
     ProfileComponent,
+    ForgotPasswordComponent,
+    ResetPasswordComponent,
 
 ],
   imports: [

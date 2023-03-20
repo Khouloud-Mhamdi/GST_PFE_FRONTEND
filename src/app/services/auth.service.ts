@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 export class AuthService {
 
   constructor(private http: HttpClient) { }
-  userURL: string = "http://localhost:8090/api/auth/";
+  userURL: string = "http://localhost:8080/api/auth/";
+  URL : string ="http://localhost:8080/utilisateurs/"
 
   login(user : any ) {
     return this.http.post<{accessToken:any}>(this.userURL + "login", user);
@@ -16,5 +17,8 @@ export class AuthService {
 
   register(user : any ): Observable<any> {
     return this.http.post(this.userURL + "signup", user);
+  }
+  forgetPassword (email :any) :Observable<boolean>{
+    return this.http.get<boolean> (this.URL +"forgot-password/" +email);
   }
 }
