@@ -19,7 +19,8 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
     console.log(this.currentUser.id);
-    this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data;}); 
+    this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data; console.log(data); } ); 
+    
     this.user.id = this.currentUser.id ; 
     
   }

@@ -3,7 +3,7 @@
       <h2> Mon <span> Profil </span></h2>
     </div>
   </section>
-  
+  <!--alerte de confirmation -->
   <div class="container">
     <div class="row">
       <div class="col-md-12">
@@ -44,17 +44,17 @@
                     <form (ngSubmit)="openConfirmationDialog()">
                         <div class="form-group">
                             <label for="nom">Nom</label>
-                            <input type="text" class="form-control"  id="nom" placeholder="Entrez votre nom"   [(ngModel)]="user.nom"  [ngModelOptions]="{standalone:true}" >
+                            <input type="text" class="form-control"  id="nom" placeholder=""   [(ngModel)]="user.nom"  [ngModelOptions]="{standalone:true}" >
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="prenom">Prénom</label>
-                            <input type="text" class="form-control"  id="prenom" placeholder="Entrez votre prénom"  [(ngModel)]="user.prenom" [ngModelOptions]="{standalone:true}" >
+                            <input type="text" class="form-control"  id="prenom" placeholder=""  [(ngModel)]="user.prenom" [ngModelOptions]="{standalone:true}" >
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="email">Adresse e-mail</label>
-                            <input type="email" class="form-control"  id="email" placeholder="Entrez votre adresse e-mail"  [(ngModel)]="user.email" [ngModelOptions]="{standalone:true}" >
+                            <input type="email" class="form-control"  id="email" placeholder=""  [(ngModel)]="user.email" [ngModelOptions]="{standalone:true}" >
                         </div>
                         <br> 
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
