@@ -18,8 +18,12 @@ export class AuthService {
   register(user : any ): Observable<any> {
     return this.http.post(this.userURL + "/signup", user);
   }
+
   forgetPassword (email :any) :Observable<boolean>{
     return this.http.get<boolean> (this.URL +"forgot-password/" +email);
+  }
+  resetPassword (token :any,password:any) :Observable<boolean>{
+    return this.http.get<boolean> (this.URL +"resetPassword/"+ token + "/" +password);
   }
 
   updateUser(user: any): Observable<any> {
