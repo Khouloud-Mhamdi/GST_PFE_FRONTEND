@@ -35,7 +35,7 @@ const routes: Routes = [
   {path : "singleEvent" , component:SingleEventComponent},
   {path : "profil" , component:ProfileComponent},
   {path : "MotDePasseOublie" , component:ForgotPasswordComponent},
-  {path : "resetPassword/:token" , component:ResetPasswordComponent},
+  {path : "resetPassword" , component:ResetPasswordComponent},
 
 
 ];

@@ -11,9 +11,10 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   styleUrls: ['./forgot-password.component.css']
 })
 export class ForgotPasswordComponent implements OnInit {
-  loginForm !: FormGroup ;
+  ForgetPasswordForm !: FormGroup ;
   title: string = "Login";
   user: any = {};
+  vide=false;
 
 
   errorMessage = "";
@@ -27,36 +28,43 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit(): void {
 
     this.titleService.setTitle('Mot de passe oublié');
-    this.loginForm = this.formBuilder.group({
-      email : ["", [Validators.email]],
+    this.ForgetPasswordForm = this.formBuilder.group({
+      email : ["", [Validators.email,Validators.required]]
+
 
      });
-
-
   }
    forgetPassword()
   {
+    if (this.ForgetPasswordForm.invalid) {
+      this.ForgetPasswordForm.markAllAsTouched();
+      return;
+    }
 
-    this.authService.forgetPassword(this.loginForm.value.email).subscribe(
+    if(this.ForgetPasswordForm.value.email==="")
+    {
+      this.vide=true;
+      setTimeout(() => {
+        this.vide = false;
+      }, 3000);
+    }
+    console.log(this.ForgetPasswordForm.value.email);
+    this.authService.forgetPassword(this.ForgetPasswordForm.value.email).subscribe(
       (exist: boolean) => {
         if (exist === true )
         {this.verrif=true;
           setTimeout(() => {
             this.verrif = false;
-          }, 4000);}   
+          }, 4000);}
 
           else{
             this.erreur=true;
           setTimeout(() => {
             this.erreur = false;
-          }, 3000);}       
+          }, 3000);}
 
-          
-
-
-       
       },
-     
+
     );
   }
 
