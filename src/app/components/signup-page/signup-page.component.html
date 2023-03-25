@@ -1,3 +1,21 @@
+<!-- Alerte de confirmation -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-danger confirmation-dialog" role="alert" *ngIf="showConfirmationDialog">
+        <h4 class="alert-heading">Vous êtes inscrit !</h4>
+        <p> Veuillez vous connecter pour accéder à votre espace</p>
+        <hr>
+        <div class="button-container">
+          <button  class="btn btn-primary btn-block" (click)="closeConfirmationDialog()" >Connecter</button>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <!-- Alerte de confirmation -->
 <!-- ======= Testimonials Section ======= -->
 <section id="hero-animated" class="hero-animated d-flex align-items-center">
   <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
@@ -13,16 +31,15 @@
     <div class="row gy-4">
 
       <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
-       <!--alert de succée -->
-       <div class="alert alert-success" role="alert"  *ngIf="register" >
-        <strong class="d-block d-sm-inline-block-force">Vous etes inscrit ! </strong>
-      </div>
+
        <!--alert alert d'erreur -->
 
-       <div class="alert alert-danger" role="alert"  *ngIf="erreur" >
+       <div class="alert alert-danger" role="alert"  *ngIf="valid&&!erreur" >
         <strong class="d-block d-sm-inline-block-force"> Veuillez vérifier vos champs !  </strong>
       </div>
-
+      <div class="alert alert-danger" role="alert"  *ngIf="erreur" >
+        <strong class="d-block d-sm-inline-block-force"> Cette adresse mail existe déjà</strong>
+      </div>
 
 
 
@@ -39,7 +56,7 @@
             <!--firstName-->
             <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre nom "  formControlName="firstName">
+                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre nom "  id="firstName"formControlName="firstName">
               </div>
               <div *ngIf="signupForm.controls['firstName'].invalid && (
                 signupForm.controls['firstName'].touched || signupForm.controls['firstName'].dirty
@@ -50,7 +67,7 @@
               <!--lastName-->
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-person"></i></span>
-                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre prenom "  formControlName="lastName">
+                <input type="text" class="form-control" id="inputName" placeholder="Entrez votre prenom " id="lastName" formControlName="lastName">
               </div>
               <div *ngIf="signupForm.controls['lastName'].invalid && (
                 signupForm.controls['lastName'].touched || signupForm.controls['lastName'].dirty
@@ -61,7 +78,7 @@
               <!--Email-->
               <div class="input-group mb-3">
                 <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                <input type="email" class="form-control" id="inputEmail" placeholder="Entrez votre email"  formControlName="email">
+                <input type="email" class="form-control" id="inputEmail" placeholder="Entrez votre email" id="email" formControlName="email">
               </div>
               <div *ngIf="signupForm.controls['email'].invalid && (
                 signupForm.controls['email'].touched || signupForm.controls['email'].dirty
@@ -94,13 +111,20 @@
               )">
                    <div *ngIf ="signupForm.controls['confirm'].errors?.['required']" class="red"> Veuillez confirmer votre mot de passe  </div>
                    <div *ngIf="signupForm.controls['confirm'].errors?.['noMatch']" class="red">
-                    Mot de passe non identique 
+                    Mot de passe non identique
                   </div>
 
               </div>
 
             <div class="form-group text-center">
             <button type="submit" class="btn btn-primary btn-block"  (click)="signup()">S'inscrire </button>
+            <div class="mt-3">
+
+              <small class="text-muted"> <strong>Vous avez déjà un compte? </strong> </small>
+              <a  routerLink="Login">Connectez-vous  </a>
+
+
+            </div>
              </div>
 
           </form>

@@ -7,8 +7,10 @@
     justify-content: center;
     align-items: center;
   }
-  
+
   .card-header h2 span {
     margin-right: 10px;
   }
-  
+  .invalid {
+    border: 1px solid red;
+  }

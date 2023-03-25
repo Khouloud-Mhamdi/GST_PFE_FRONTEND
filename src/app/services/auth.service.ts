@@ -30,8 +30,11 @@ export class AuthService {
     const url = `${this.userURL}/UpdateCurrentUser`;
     return this.http.put<any>(url, user);
   }
- 
- 
+  ExistEmail (email :any) :Observable<boolean>{
+    return this.http.get<boolean> (this.userURL +"/ExistEmail/" +email);
+  }
+
+
   getCurrentUserById(id:number){
     return this.http.get(`${this.userURL}/${id}`)
   }

@@ -14,13 +14,14 @@ import { Router } from '@angular/router';
 })
 export class ResetPasswordComponent implements OnInit {
   ResetPasswordForm !: FormGroup ;
-  
+
   errorMessage = "";
   updated = false ;
   erreur = false ;
   token:any;
   showConfirmationDialog = false;
-  
+  vide=false;
+
 
 
   constructor(private titleService: Title ,private router: Router, private formBuilder : FormBuilder ,  private authService: AuthService,private route: ActivatedRoute) { }
@@ -48,14 +49,20 @@ export class ResetPasswordComponent implements OnInit {
       this.ResetPasswordForm.markAllAsTouched();
       return;
     }
-
+    if((this.ResetPasswordForm.value.password==="")&&(this.ResetPasswordForm.value.confirm===""))
+    {
+      this.vide=true;
+      setTimeout(() => {
+        this.vide = false;
+      }, 3000);
+    }
 
    this.authService.resetPassword(this.token,this.ResetPasswordForm.value.password).subscribe(
     (exist: boolean) => {
       if (exist === true )
       {
-       
-          this.openConfirmationDialog(); 
+
+          this.openConfirmationDialog();
         }
 
         else{
@@ -70,7 +77,7 @@ export class ResetPasswordComponent implements OnInit {
 
   }
   openConfirmationDialog() {
-    
+
     this.showConfirmationDialog = true;
   }
   closeConfirmationDialog() {

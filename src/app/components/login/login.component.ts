@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   isLoginFailed = false;
   errorMessage = "";
   role !: string ;
-
+  
   connect = false ;
   erreur = false ;
   constructor(private titleService: Title ,private formBuilder : FormBuilder ,   private authService: AuthService,
@@ -38,6 +38,7 @@ export class LoginComponent implements OnInit {
   }
   login ()
   {
+    
     console.log("This is my user : ", this.loginForm.value);
     this.authService.login(this.loginForm.value).subscribe(
       (data) => {
