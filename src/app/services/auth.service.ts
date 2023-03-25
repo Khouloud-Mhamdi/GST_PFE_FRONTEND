@@ -1,13 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { TokenStorageService } from './token-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient , private token : TokenStorageService) { }
   userURL: string = "http://localhost:8080/api/auth";
   URL : string ="http://localhost:8080/utilisateurs/"
 
@@ -34,5 +35,18 @@ export class AuthService {
  
   getCurrentUserById(id:number){
     return this.http.get(`${this.userURL}/${id}`)
+  }
+
+  // une méthode qui verifie le role d'un utilisateur connecté 
+  public roleMatch(allowedRole : any ): boolean {
+    let isMatch = false; 
+    const userRole : any = this.token.getUser().role ; 
+    if (userRole != null && userRole)
+    {
+      if (userRole===allowedRole){
+         isMatch = true ; 
+      }
+    }
+    return isMatch ; 
   }
 }

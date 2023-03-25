@@ -34,4 +34,9 @@ export class TokenStorageService {
 
     return {};
   }
+  
+   // fonction qui verifie si un utilisateu est connecté 
+  public isLoggedIn() {
+    return this.getToken() && this.getUser() ; 
+  }
 }
