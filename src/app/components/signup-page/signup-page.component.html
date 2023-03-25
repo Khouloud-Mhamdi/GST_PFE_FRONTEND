@@ -111,7 +111,7 @@
               )">
                    <div *ngIf ="signupForm.controls['confirm'].errors?.['required']" class="red"> Veuillez confirmer votre mot de passe  </div>
                    <div *ngIf="signupForm.controls['confirm'].errors?.['noMatch']" class="red">
-                    Mot de passe non identique
+                    Le mot de passe et sa confirmation ne correspondent pas.
                   </div>
 
               </div>
