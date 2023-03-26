@@ -52,7 +52,7 @@ export class LoginComponent implements OnInit {
         this.isLoginFailed = false;
         this.isLoggedIn = true;
         this.role = this.tokenStorage.getUser().role;
-        this.router.navigate(["profil"]);
+        this.router.navigate([""]);
       },
       (err) => {
         console.log("here error after login", err);

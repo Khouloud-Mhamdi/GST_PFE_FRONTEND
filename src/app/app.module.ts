@@ -28,6 +28,8 @@ import { HttpClientModule } from "@angular/common/http";
 import { ProfileComponent } from './components/profile/profile.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { ReservationComponent } from './components/reservation/reservation.component';
+
 
 
 @NgModule({
@@ -57,6 +59,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     ProfileComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
+    ReservationComponent,
+   
 
 ],
   imports: [

@@ -38,17 +38,19 @@
         </li>
         <li><a class="nav-link scrollto" routerLink="events"><strong>Evénements</strong></a></li>
         <li><a class="nav-link scrollto" routerLink="Contact" ><strong>Contact</strong></a></li>
+        <li><a class="nav-link scrollto" routerLink="profil" *ngIf="authService.roleMatch('ROLE_USER')" ><strong>Mon Profil</strong></a></li>
 
 
 
 
-        <li class="dropdown"><a routerLink="signup" style="font-size: 15px;margin-left: 25px; text-decoration: underline;" ><span>S'inscrire</span> </a>
-          <li class="dropdown"><a routerLink="Login" style="font-size: 15px;text-decoration: underline;" ><span>Se connecter</span> </a>
+        <li class="dropdown"><a routerLink="signup" *ngIf="!isLoggedIn()" style="font-size: 15px;margin-left: 25px; text-decoration: underline;" ><span>S'inscrire</span> </a>
+          <li class="dropdown"><a routerLink="Login" *ngIf="!isLoggedIn()" style="font-size: 15px;text-decoration: underline;" ><span>Se connecter</span> </a></li>
+          <li class="dropdown" ><a (click)="LogOut ()"*ngIf="isLoggedIn()" style="font-size: 15px;text-decoration: underline;" ><span>Se deconnecter</span> </a></li>
       </ul>
       <i class="bi bi-list mobile-nav-toggle d-none"></i>
     </nav><!-- .navbar -->
 
-    <a class="btn-getstarted scrollto" href="index.html#about">Réserver</a>
+    <a class="btn-getstarted scrollto"  (click)="reserver()" >Réserver</a>
     <a class="btn-getstarted scrollto" href="index.html#about">Devenir membre</a>
 
   </div>

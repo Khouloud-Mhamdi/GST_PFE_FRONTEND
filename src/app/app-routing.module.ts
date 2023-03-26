@@ -10,6 +10,7 @@ import { HomeComponent } from './components/home/home.component';
 import { KaratePageComponent } from './components/karate-page/karate-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
+import { ReservationComponent } from './components/reservation/reservation.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 
 import { SignupPageComponent } from './components/signup-page/signup-page.component';
@@ -36,7 +37,7 @@ const routes: Routes = [
   {path : "profil" , component:ProfileComponent},
   {path : "MotDePasseOublie" , component:ForgotPasswordComponent},
   {path : "resetPassword" , component:ResetPasswordComponent},
-
+  {path : "reservation" , component:ReservationComponent},
 
 ];
 
