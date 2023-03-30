@@ -7,6 +7,7 @@ import { EventPageComponent } from './components/event-page/event-page.component
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { HandballPageComponent } from './components/handball-page/handball-page.component';
 import { HomeComponent } from './components/home/home.component';
+import { InscriptionDisciplineComponent } from './components/inscription-discipline/inscription-discipline.component';
 import { KaratePageComponent } from './components/karate-page/karate-page.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProfileComponent } from './components/profile/profile.component';
@@ -27,7 +28,9 @@ const routes: Routes = [
   {path : "Volleyball" , component:VolleyballPageComponent},
   {path : "Karaté" , component:KaratePageComponent},
 
+  
   {path : "Login" , component:LoginComponent},
+  {path : "InscriptionDiscipline" , component:InscriptionDisciplineComponent},
 
   {path : "Handball" , component:HandballPageComponent},
   {path : "apropos" , component: AproposPageComponent},

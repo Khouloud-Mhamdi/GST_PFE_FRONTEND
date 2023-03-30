@@ -15,16 +15,25 @@ export class HeaderComponent implements OnInit {
   ngOnInit(): void {
   }
     public isLoggedIn (){
-      return this.token.isLoggedIn(); 
+      return this.token.isLoggedIn();
     }
     public LogOut () {
-      this.token.signOut(); 
+      this.token.signOut();
       this.router.navigate(['']);
     }
     reserver(){
       if(this.isLoggedIn())
       {
         this.router.navigate(['reservation']);
+      }
+      else {
+        this.router.navigate(['Login']);
+      }
+    }
+    Inscription(){
+      if(this.isLoggedIn())
+      {
+        this.router.navigate(['InscriptionDiscipline']);
       }
       else {
         this.router.navigate(['Login']);

@@ -29,6 +29,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
+import { InscriptionDisciplineComponent } from './components/inscription-discipline/inscription-discipline.component';
 
 
 
@@ -60,6 +61,7 @@ import { ReservationComponent } from './components/reservation/reservation.compo
     ForgotPasswordComponent,
     ResetPasswordComponent,
     ReservationComponent,
+    InscriptionDisciplineComponent,
    
 
 ],

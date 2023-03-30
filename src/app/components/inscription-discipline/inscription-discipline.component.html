@@ -1,0 +1,155 @@
+
+<section id="hero-animated" class="hero-animated d-flex align-items-center">
+  <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
+    <h2> S'inscrire <span>Dans une discipline sportive</span></h2>
+  </div>
+</section>
+
+
+<div class="container-fluid bg-primary py-5">
+
+  <div class="container">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-12">
+        <div class="card">
+          <div class="card-body">
+              <div class="d-flex justify-content-center mb-4">
+                  <i class="bi bi-person h2"></i>
+                </div>
+            <h5 class="card-title text-center mb-4"> <strong>Formulaire d'inscription </strong> </h5>
+            <form>
+              <div class="form-section">
+              <h2>Coordonnées</h2>
+              <div class="row">
+                <div class="col">
+              <label><strong> Vous voulez inscrire :</strong></label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="myself" name="relation" value="myself">
+                <label class="form-check-label" for="myself">
+                  Vous-même
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="child" name="relation" value="child">
+                <label class="form-check-label" for="child">
+                  Votre enfant
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input class="form-check-input" type="radio" id="spouse" name="relation" value="spouse">
+                <label class="form-check-label" for="spouse">
+                  Votre conjoint
+                </label>
+              </div> </div></div>
+              <br>
+              <div class="row">
+                <div class="col">
+
+                    <label for="nom">Nom :<span class="tx-danger">*</span></label>
+                    <input type="text" class="form-control" id="nom" formControlName="nom" placeholder="Entrez votre nom">
+
+                </div>
+                <div class="col">
+                  <label for="nom">Prénom : <span class="tx-danger">*</span></label>
+                  <input type="text" class="form-control" id="nom" formControlName="nom" placeholder="Entrez votre nom">
+
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <label for="nom">E-mail: <span class="tx-danger">*</span></label>
+                    <input type="text" class="form-control" id="nom" formControlName="nom" placeholder="Entrez votre adresse mail">
+                   </div>
+                <div class="col">
+                  <label for="nom">Téléphone :<span class="tx-danger">*</span></label>
+                    <input type="text" class="form-control" id="nom" formControlName="nom" placeholder="Entrez votre numéro de téléphone">
+                 </div></div>
+                 <br>
+              <div class="row">
+                <div class="col">
+                  <label for="nom">Date de naissance: <span class="tx-danger">*</span></label>
+                    <input type="datetime-local" class="form-control" id="nom" formControlName="date" placeholder="Entrez votre adresse mail">
+                   </div>
+                <div class="col">
+                  <label for="nom">Lieu de naissance :</label>
+                    <input type="text" class="form-control" id="nom" formControlName="lieu" placeholder="Entrez votre lieu de naissance">
+                 </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <label for="nom">Numéro de CIN: <span class="tx-danger">*</span></label>
+                    <input type="text" class="form-control" id="nom" formControlName="cin" placeholder="Entrez votre numéro de CIN">
+                   </div>
+                <div class="col">
+                  <label for="nom">Profession :</label>
+                    <input type="text" class="form-control" id="nom" formControlName="profession" placeholder="Entrez votre profession">
+                 </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <label for="nom">Adresse: <span class="tx-danger">*</span></label>
+                    <input type="text" class="form-control" id="adresse" formControlName="adresse" placeholder="Entrez votre adresse">
+                   </div>
+
+              </div></div>
+              <div class="form-section">
+              <h2>Fichiers à fournir</h2>
+              <div class="row">
+                <div class="col">
+                  <label for="cv">Photo :</label>
+                  <input type="file" id="photo" name="photo" class="form-control" accept="image/*" required>
+                </div>
+                <div class="col">
+                  <label for="lettre_motivation">Certificat médical:</label>
+                  <input type="file" id="certificat" name="certificat" class="form-control" accept=".pdf,.doc,.docx" required>
+                </div>
+              </div>
+              <br>
+              <div class="row">
+                <div class="col">
+                  <label for="cv">Extrait de naissance :</label>
+                  <input type="file" id="photo" name="photo" class="form-control" accept=".pdf,.doc,.docx" required>
+                </div>
+
+              </div>
+            </div>
+            <div class="form-section">
+              <h2>Discipline</h2>
+              <div class="form-group">
+                <label for="modePaiement">Discipline : <span class="tx-danger">*</span></label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Choisissez une discipline sportive</option>
+                        <option value="especes">Espèces</option>
+                        <option value="banque">Banque</option>
+
+                      </select>
+              </div></div>
+              <div class="form-section">
+              <h2>Mode de paiement</h2>
+              <div class="form-group">
+                <label for="modePaiement">Mode de paiement : <span class="tx-danger">*</span></label>
+                      <select class="form-select" aria-label="Default select example">
+                        <option selected>Choisissez un mode de paiement</option>
+                        <option value="especes">Espèces</option>
+                        <option value="banque">Banque</option>
+
+                      </select>
+              </div>
+</div>
+<div class="form-group text-center">
+  <button type="submit" class="btn btn-primary btn-block ">S'inscrire </button>
+   </div>
+            </form>
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
