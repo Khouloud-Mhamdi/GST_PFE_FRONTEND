@@ -87,3 +87,9 @@ form h2 {
   padding: 20px;
   margin-bottom: 40px;
 }
+.invalid {
+  border: 1px solid red;
+}
+.red{
+  color: red;
+}
