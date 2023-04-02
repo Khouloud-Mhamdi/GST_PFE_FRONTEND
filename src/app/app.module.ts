@@ -30,6 +30,7 @@ import { ForgotPasswordComponent } from './components/forgot-password/forgot-pas
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { InscriptionDisciplineComponent } from './components/inscription-discipline/inscription-discipline.component';
+import { OneEventComponent } from './components/one-event/one-event.component';
 
 
 
@@ -62,6 +63,7 @@ import { InscriptionDisciplineComponent } from './components/inscription-discipl
     ResetPasswordComponent,
     ReservationComponent,
     InscriptionDisciplineComponent,
+    OneEventComponent,
    
 
 ],

@@ -1,0 +1,17 @@
+
+
+<div class="col-lg-10">
+<div data-aos="fade-up" data-aos-delay="200">
+    <div class="post-box">
+      <div class="post-img"><img  src="{{this.eventService.host+'/api/Imgevents/'+eventInput.id}}"  class="img-fluid" alt=""></div>
+      <div class="meta">
+        <span class="post-date">Date de l'evenement : </span>
+        <span class="post-author">{{eventInput.date}}</span>
+      </div>
+      <h3 class="post-title">{{eventInput.titre}}</h3>
+      <p>{{eventInput.description}}</p>
+      <a (click)="goToDisplay(eventInput.id)" class="readmore stretched-link"><span>consulter</span><i class="bi bi-arrow-right"></i></a>
+    </div>
+  </div>
+  </div>
+  
