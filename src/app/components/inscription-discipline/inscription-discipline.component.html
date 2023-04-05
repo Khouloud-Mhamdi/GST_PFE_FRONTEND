@@ -50,7 +50,11 @@
                 <label class="form-check-label" for="spouse">
                   Votre conjoint
                 </label>
-              </div> </div></div>
+              </div>
+
+                   <div *ngIf ="ControleInputStegiste"  class="red"> Ce champ est obligatoire  </div>
+              </div>
+              </div>
               <br>
               <div class="row">
                 <div class="col">
@@ -93,13 +97,30 @@
                 <div class="col">
                   <label for="nom">Téléphone :<span class="tx-danger">*</span></label>
                     <input type="text" class="form-control" id="telephone" formControlName="telephone"  placeholder="Entrez votre numéro de téléphone" >
-                 </div></div>
+                    <div *ngIf="addFamilleForm.controls['telephone'].invalid && (
+                      addFamilleForm.controls['telephone'].touched || addFamilleForm.controls['telephone'].dirty
+                    )">
+                         <div *ngIf ="addFamilleForm.controls['telephone'].errors?.['required']" class="red">  Ce champ est obligatoire </div>
+
+
+                    </div>
+                  </div>
+
+
+              </div>
                  <br>
               <div class="row">
                 <div class="col">
                   <label for="nom">Date de naissance: <span class="tx-danger">*</span></label>
-                    <input type="datetime-local" class="form-control" id="nom" formControlName="date_naissance"  placeholder="Entrez votre adresse mail">
-                   </div>
+                    <input type="datetime-local" class="form-control" id="date" formControlName="date_naissance"  >
+                    <div *ngIf="addFamilleForm.controls['date_naissance'].invalid && (
+                      addFamilleForm.controls['date_naissance'].touched || addFamilleForm.controls['date_naissance'].dirty
+                    )">
+                         <div *ngIf ="addFamilleForm.controls['date_naissance'].errors?.['required']" class="red">  Ce champ est obligatoire </div>
+
+                    </div>
+                  </div>
+
                 <div class="col">
                   <label for="nom">Lieu de naissance :</label>
                     <input type="text" class="form-control" id="nom" formControlName="lieu_naissance"   placeholder="Entrez votre lieu de naissance">
@@ -117,59 +138,50 @@
               <div class="row">
                 <div class="col">
                   <label for="nom">Adresse: <span class="tx-danger">*</span></label>
-                    <input type="text" class="form-control" id="adresse" formControlName="adresse"  placeholder="Entrez votre adresse">
-                   </div>
+
+                  <input type="text" class="form-control" id="adresse" formControlName="adresse"  placeholder="Entrez votre adresse">
+                  <div *ngIf="addFamilleForm.controls['adresse'].invalid && (
+                    addFamilleForm.controls['adresse'].touched || addFamilleForm.controls['adresse'].dirty
+                  )">
+                       <div *ngIf ="addFamilleForm.controls['adresse'].errors?.['required']" class="red">  Ce champ est obligatoire </div>
+
+                  </div>
+
+                </div>
+
+
 
               </div>
               <br>
               <label> Vous êtes :</label>
               <div class="form-check" >
-                <input class="form-check-input" type="radio" id="adherent"  [(ngModel)]="stegiste"name="stegiste" value="stegiste" formControlName="stegiste" [attr.disabled]="userInscrit ? true : null">
+                <input class="form-check-input" type="radio" id="adherent"  [(ngModel)]="stegiste"name="stegiste" value="stegiste" formControlName="stegiste" [attr.disabled]="userInscrit ? true : null" (change)="onRoleChange($event)">
                 <label class="form-check-label" for="myself">
                   Stegiste
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" id="enfant"  [(ngModel)]="stegiste" name="stegiste" value="non_stegiste" formControlName="stegiste" [attr.disabled]="userInscrit ? true : null">
+                <input class="form-check-input" type="radio" id="enfant"  [(ngModel)]="stegiste" name="stegiste" value="non_stegiste" formControlName="stegiste" [attr.disabled]="userInscrit ? true : null" (change)="onRoleChange($event)">
                 <label class="form-check-label" for="child">
                   Non Stegiste
                 </label>
               </div>
               <br>
-              <div class="row">
+              <div class="row" *ngIf="showMatricule">
                 <div class="col">
                   <label for="nom">Matricule:</label>
                     <input type="text" class="form-control" id="matricule" formControlName="matricule" [attr.disabled]="userInscrit ? true : null" placeholder="Entrez votre matricule" [(ngModel)]="ValeurMatricule">
                    </div>
+                   <div *ngIf ="addFamilleForm.controls['matricule'].errors?.['required']" class="red"> Ce champ est obligatoire  </div>
 
               </div>
             </div>
-              <div class="form-section">
-              <h2>Fichiers à fournir</h2>
-              <div class="row">
-                <div class="col">
-                  <label for="cv">Photo :</label>
-                  <input type="file" id="photo" name="photo" class="form-control" accept="image/*" required>
-                </div>
-                <div class="col">
-                  <label for="lettre_motivation">Certificat médical:</label>
-                  <input type="file" id="certificat" name="certificat" class="form-control" accept=".pdf,.doc,.docx" required>
-                </div>
-              </div>
-              <br>
-              <div class="row">
-                <div class="col">
-                  <label for="cv">Extrait de naissance :</label>
-                  <input type="file" id="photo" name="photo" class="form-control" accept=".pdf,.doc,.docx" required>
-                </div>
 
-              </div>
-            </div>
             <div class="form-section">
               <h2>Discipline</h2>
               <div class="form-group">
                 <label for="modePaiement">Discipline : <span class="tx-danger">*</span></label>
-                      <select class="form-select" aria-label="Default select example">
+                      <select class="form-select" aria-label="Default select example" formControlName="discipline">
                         <option  *ngFor="let d of disciplines " value="{{d?.id}}">{{d?.discipline}}</option>
 
 
@@ -182,9 +194,9 @@
               <h2>Mode de paiement</h2>
               <div class="form-group">
                 <label for="modePaiement">Mode de paiement : <span class="tx-danger">*</span></label>
-                      <select class="form-select" aria-label="Default select example">
+                      <select class="form-select" aria-label="Default select example" formControlName="mode_paiement">
                         <option selected>Choisissez un mode de paiement</option>
-                        <option value="especes">Espèces</option>
+                        <option value="especes" >Espèces</option>
                         <option value="banque">Banque</option>
 
                       </select>

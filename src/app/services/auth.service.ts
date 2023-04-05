@@ -11,7 +11,8 @@ export class AuthService {
   constructor(private http: HttpClient , private token : TokenStorageService) { }
   userURL: string = "http://localhost:8080/api/auth";
   URL : string ="http://localhost:8080/utilisateurs/";
-  inscriptionURL : string ="http://localhost:8080/famille"
+  inscriptionURL : string ="http://localhost:8080/famille";
+  InscriURL : string ="http://localhost:8080/inscription";
 
   login(user : any ) {
     return this.http.post<{accessToken:any}>(this.userURL + "/login", user);
@@ -56,6 +57,16 @@ export class AuthService {
   addMembreFamille(user : any , id: any) : Observable<any> {
     return this.http.post(this.inscriptionURL + "/ajouter?id=" + id, user);
   }
-   
+  updateProduct(user:any, imageFile: File): Observable<any> {
+    const formData = new FormData();
+    formData.append('file', imageFile);
+    formData.append('nom', user.nom);
+    formData.append('prenom', user.prenom);
+
+    return this.http.put<any>(this.userURL +"/ModifierImage", formData);
+  }
+  addInscription(user : any , id: any , idD:any ) : Observable<any> {
+    return this.http.post(this.InscriURL + "/ajouter?id=" + id + "&idD=" + idD, user);
+  }
 
 }
