@@ -331,7 +331,7 @@ export class InscriptionDisciplineComponent implements OnInit {
       mode_paiement : this.addFamilleForm.value.mode_paiement
 
     }; console.log(this.membreFamille.id);
-    this.authService.addInscription(this.Inscription , 69 , this.addFamilleForm.value.discipline).subscribe(
+    this.authService.addInscription(this.Inscription , 55 , this.addFamilleForm.value.discipline).subscribe(
       (data) => {
         console.log('Inscription ajouté: ', data);
         
