@@ -4,10 +4,26 @@
     <h2> S'inscrire <span>Dans une discipline sportive</span></h2>
   </div>
 </section>
-
+<!-- Alerte de confirmation -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-success confirmation-dialog" role="alert" *ngIf="showConfirmationDialog">
+        <h4 class="alert-heading">Confirmation d'inscription</h4>
+        <p>Voulez-vous enregistrer cette inscription ?</p>
+        <hr>
+        <div class="button-container">
+          <button class="btn btn-secondary cancel-button" (click)="closeConfirmationDialog()">Annuler</button>
+          <button class="btn btn-success confirm-button" (click)="addFamille()">Enregistrer</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ <!-- Alerte de confirmation -->
  <!--alert de succée -->
  <div class="alert alert-success" role="alert"  *ngIf="ajout" >
-  <strong class="d-block d-sm-inline-block-force"> un nouveau membre est ajouté avec succés </strong>
+  <strong class="d-block d-sm-inline-block-force"> Félicitation! vous demande d'inscription est enregistrée avec succés  </strong>
 </div>
  <!--alert alert d'erreur -->
 
@@ -52,7 +68,7 @@
                 </label>
               </div>
 
-                   <div *ngIf ="ControleInputStegiste"  class="red"> Ce champ est obligatoire  </div>
+                   <div *ngIf ="(alerteRelation)&&(clickInscrire)"  class="red"> Ce champ est obligatoire  </div>
               </div>
               </div>
               <br>
@@ -96,7 +112,7 @@
                   </div>
                 <div class="col">
                   <label for="nom">Téléphone :<span class="tx-danger">*</span></label>
-                    <input type="text" class="form-control" id="telephone" formControlName="telephone"  placeholder="Entrez votre numéro de téléphone" >
+                    <input type="text" class="form-control" id="telephone" formControlName="telephone"  placeholder="Entrez votre numéro de téléphone" [(ngModel)]="ValeurTelephone" >
                     <div *ngIf="addFamilleForm.controls['telephone'].invalid && (
                       addFamilleForm.controls['telephone'].touched || addFamilleForm.controls['telephone'].dirty
                     )">
@@ -112,7 +128,7 @@
               <div class="row">
                 <div class="col">
                   <label for="nom">Date de naissance: <span class="tx-danger">*</span></label>
-                    <input type="datetime-local" class="form-control" id="date" formControlName="date_naissance"  >
+                    <input type="date" class="form-control" id="date" formControlName="date_naissance" [(ngModel)]="ValeurDateNaissance" >
                     <div *ngIf="addFamilleForm.controls['date_naissance'].invalid && (
                       addFamilleForm.controls['date_naissance'].touched || addFamilleForm.controls['date_naissance'].dirty
                     )">
@@ -123,7 +139,7 @@
 
                 <div class="col">
                   <label for="nom">Lieu de naissance :</label>
-                    <input type="text" class="form-control" id="nom" formControlName="lieu_naissance"   placeholder="Entrez votre lieu de naissance">
+                    <input type="text" class="form-control" id="nom" formControlName="lieu_naissance" [(ngModel)]="ValeurLieuNaissance"  placeholder="Entrez votre lieu de naissance">
                  </div>
               </div>
               <br>
@@ -131,7 +147,7 @@
 
                 <div class="col">
                   <label for="nom"> Votre Profession :</label>
-                    <input type="text" class="form-control" id="nom" formControlName="profession"  [(ngModel)]="ValeurProfession" [attr.disabled]="userInscrit ? true : null" placeholder="Entrez votre profession">
+                    <input type="text" class="form-control" id="nom" formControlName="profession"  [(ngModel)]="ValeurProfession"  placeholder="Entrez votre profession">
                  </div>
               </div>
               <br>
@@ -139,7 +155,7 @@
                 <div class="col">
                   <label for="nom">Adresse: <span class="tx-danger">*</span></label>
 
-                  <input type="text" class="form-control" id="adresse" formControlName="adresse"  placeholder="Entrez votre adresse">
+                  <input type="text" class="form-control" id="adresse" formControlName="adresse"  placeholder="Entrez votre adresse" [(ngModel)]="ValeurAdresse">
                   <div *ngIf="addFamilleForm.controls['adresse'].invalid && (
                     addFamilleForm.controls['adresse'].touched || addFamilleForm.controls['adresse'].dirty
                   )">
@@ -155,25 +171,26 @@
               <br>
               <label> Vous êtes :</label>
               <div class="form-check" >
-                <input class="form-check-input" type="radio" id="adherent"  [(ngModel)]="stegiste"name="stegiste" value="stegiste" formControlName="stegiste" [attr.disabled]="userInscrit ? true : null" (change)="onRoleChange($event)">
+                <input class="form-check-input" type="radio" id="adherent"  [(ngModel)]="stegiste"name="stegiste" value="stegiste" formControlName="stegiste"  (change)="onRoleChange($event)">
                 <label class="form-check-label" for="myself">
                   Stegiste
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" id="enfant"  [(ngModel)]="stegiste" name="stegiste" value="non_stegiste" formControlName="stegiste" [attr.disabled]="userInscrit ? true : null" (change)="onRoleChange($event)">
+                <input class="form-check-input" type="radio" id="enfant"  [(ngModel)]="stegiste" name="stegiste" value="non_stegiste" formControlName="stegiste"  (change)="onRoleChange($event)">
                 <label class="form-check-label" for="child">
                   Non Stegiste
                 </label>
               </div>
+              <div *ngIf ="(alerteStegiste)&&(clickInscrire)"  class="red"> Ce champ est obligatoire  </div>
               <br>
-              <div class="row" *ngIf="showMatricule">
+              <div class="row" >
                 <div class="col">
                   <label for="nom">Matricule:</label>
-                    <input type="text" class="form-control" id="matricule" formControlName="matricule" [attr.disabled]="userInscrit ? true : null" placeholder="Entrez votre matricule" [(ngModel)]="ValeurMatricule">
+                    <input type="text" class="form-control" id="matricule" formControlName="matricule" placeholder="Entrez votre matricule" [(ngModel)]="ValeurMatricule">
                    </div>
-                   <div *ngIf ="addFamilleForm.controls['matricule'].errors?.['required']" class="red"> Ce champ est obligatoire  </div>
-
+                  
+                   <div *ngIf ="(alerteMatricule)&&(clickInscrire)"  class="red"> Ce champ est obligatoire  </div>
               </div>
             </div>
 
@@ -181,7 +198,7 @@
               <h2>Discipline</h2>
               <div class="form-group">
                 <label for="modePaiement">Discipline : <span class="tx-danger">*</span></label>
-                      <select class="form-select" aria-label="Default select example" formControlName="discipline">
+                      <select class="form-select" aria-label="Default select example" formControlName="discipline" (change)="DisciplineChange($event)"  placeholder="Choisissez une discipline sportive">
                         <option  *ngFor="let d of disciplines " value="{{d?.id}}">{{d?.discipline}}</option>
 
 
@@ -189,21 +206,23 @@
 
                       </select>
               </div>
+              <div *ngIf ="(alerteDiscipline)&&(clickInscrire)"  class="red"> Ce champ est obligatoire  </div>
             </div>
               <div class="form-section">
               <h2>Mode de paiement</h2>
               <div class="form-group">
-                <label for="modePaiement">Mode de paiement : <span class="tx-danger">*</span></label>
-                      <select class="form-select" aria-label="Default select example" formControlName="mode_paiement">
-                        <option selected>Choisissez un mode de paiement</option>
+                <label for="modePaiement">Mode de paiement : </label>
+                      <select class="form-select" aria-label="Default select example" formControlName="mode_paiement" placeholder="Choissisez un mode de paiement">
+                        
                         <option value="especes" >Espèces</option>
                         <option value="banque">Banque</option>
 
                       </select>
               </div>
+
 </div>
 <div class="form-group text-center">
-  <button  class="btn btn-primary btn-block " (click)="addFamille()">S'inscrire </button>
+  <button  class="btn btn-primary btn-block " (click)="openConfirmationDialog()">S'inscrire </button>
    </div>
             </form>
 

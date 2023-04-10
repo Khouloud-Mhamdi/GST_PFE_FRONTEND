@@ -65,8 +65,8 @@ export class AuthService {
 
     return this.http.put<any>(this.userURL +"/ModifierImage", formData);
   }
-  addInscription(user : any , id: any , idD:any ) : Observable<any> {
-    return this.http.post(this.InscriURL + "/ajouter?id=" + id + "&idD=" + idD, user);
+  addInscription(user : any , id: any , idD:any, role:any ) : Observable<any> {
+    return this.http.post(this.InscriURL + "/ajouter?id=" + id + "&idD=" + idD + "&role=" + role, user);
   }
 
 }
