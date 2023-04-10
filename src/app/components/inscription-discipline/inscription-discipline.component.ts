@@ -130,6 +130,10 @@ export class InscriptionDisciplineComponent implements OnInit {
     {
       this.ValeurPrenom = '';
       this.ValeurNom = '';
+	  this.ValeurAdresse = '';
+	  this.ValeurTelephone = '';
+	  this.ValeurLieuNaissance = '';
+	  this.ValeurDateNaissance = '';
       this.ValeurEmail= this.user.email;
       this.alerteRelation=false;
     }
@@ -138,6 +142,10 @@ export class InscriptionDisciplineComponent implements OnInit {
       this.ValeurPrenom = '';
       this.ValeurNom = '';
       this.ValeurEmail = '';
+	   this.ValeurAdresse = '';
+	  this.ValeurTelephone = '';
+	  this.ValeurLieuNaissance = '';
+	  this.ValeurDateNaissance = '';
       this.alerteRelation=false;
 
     }
