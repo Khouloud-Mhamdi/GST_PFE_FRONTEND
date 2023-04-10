@@ -59,6 +59,24 @@
                             <input type="email" class="form-control"  id="email" placeholder="Entrez votre adresse e-mail" id="email" [(ngModel)]="user.email" [ngModelOptions]="{standalone:true}" >
                         </div>
                         <br>
+
+                         <div  *ngIf=" afficheDiscipline">
+                        <label for="discipline">Disciplines auxquelles vous etes inscrit : </label>
+                        <br>
+                        <br>
+                        <div class="row">
+                          <div class="col-md-4" *ngFor="let d of disciplines">
+                            <div class="card mb-4 shadow-sm">
+                              <div class="card-body">
+                                <h5 class="card-title">{{ d.discipline }}</h5>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        
+                        </div>
+
+                        <br>
                         <button type="submit" class="btn btn-primary">Enregistrer</button>
                     </form>
                 </div>

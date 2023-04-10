@@ -163,7 +163,7 @@ export class InscriptionDisciplineComponent implements OnInit {
       this.alerteStegiste=true;
 
     }
-   
+
   }
   DisciplineChange(event: any) {
     if (!this.controleSaisieDiscipline() )
@@ -224,7 +224,7 @@ export class InscriptionDisciplineComponent implements OnInit {
     }
   }
   controleSaisieMatricule( ): boolean {
-   
+
     let verif =true;
     console.log(this.selectedStegiste)
     this.alerteMatricule=false;
@@ -258,7 +258,7 @@ export class InscriptionDisciplineComponent implements OnInit {
   }
   controleSaisieNom( ): boolean {
     let verif =true;
-    
+
     if((this.selectedRelation==='conjoint')||(this.selectedRelation==='enfant')){
     const nomInput = document.getElementById("nom") as HTMLInputElement;
     console.log(nomInput);
@@ -299,7 +299,7 @@ export class InscriptionDisciplineComponent implements OnInit {
       const regex =/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/ ;
       if (!regex.test(this.addFamilleForm.value.email)) {
         nomInput.classList.add("invalid");
-   
+
         verif=false;
       } else {
         nomInput.classList.remove("invalid");
@@ -340,7 +340,7 @@ export class InscriptionDisciplineComponent implements OnInit {
     this.authService.updateUser(this.userUpdate).subscribe(
       (data) => {
         console.log('here updated user: ', data);
-        
+
       },(err) => {
         console.log("here error from BE", err);
 
@@ -353,7 +353,7 @@ export class InscriptionDisciplineComponent implements OnInit {
       this.Inscription ={
         mode_paiement : this.addFamilleForm.value.mode_paiement
 
-      } 
+      }
       console.log(this)
       this.authService.addInscription(this.Inscription , this.user.id , this.addFamilleForm.value.discipline,'adherent').subscribe(
         (data) => {
@@ -378,7 +378,7 @@ export class InscriptionDisciplineComponent implements OnInit {
       (data) => {
         this.Inscription ={
           mode_paiement : this.addFamilleForm.value.mode_paiement
-    
+
         };
 
         console.log(data);
@@ -389,13 +389,13 @@ export class InscriptionDisciplineComponent implements OnInit {
         this.authService.addInscription(this.Inscription , this.membreFamille.id, this.addFamilleForm.value.discipline,'membre').subscribe(
           (data) => {
             console.log('Inscription ajouté: ', data);
-    
+
              this.ajout = true;
             setTimeout(() => {
               this.ajout = false;
             }, 6000); // 3000 ms = 3 secondes
           },(err) => {
-            
+
             this.valid=true;
             setTimeout(() => {
               this.valid = false;
@@ -410,8 +410,9 @@ export class InscriptionDisciplineComponent implements OnInit {
         }, 6000); // 3000 ms = 3 secondes
       }
 
-    );  
-    
+
+    );
+
      if (this.user.stegiste===null )
     {this.userUpdateFamilly = {
       id: this.user.id,
@@ -425,7 +426,7 @@ export class InscriptionDisciplineComponent implements OnInit {
     };
     this.authService.updateUser(this.userUpdateFamilly).subscribe(
       (data) => {
-        
+
       },(err) => {
       console.log("update grave");
         this.valid=true;

@@ -27,21 +27,18 @@ const routes: Routes = [
   {path : "Tennis" , component:TennisPageComponent},
   {path : "Volleyball" , component:VolleyballPageComponent},
   {path : "Karaté" , component:KaratePageComponent},
-
-  
-  {path : "Login" , component:LoginComponent},
   {path : "InscriptionDiscipline" , component:InscriptionDisciplineComponent},
-
+  {path : "Login" , component:LoginComponent},
   {path : "Handball" , component:HandballPageComponent},
   {path : "apropos" , component: AproposPageComponent},
   {path : "signup" , component: SignupPageComponent},
   {path : "events" , component:EventPageComponent},
-  {path : "singleEvent" , component:SingleEventComponent},
+  {path:"eventInfo/:id",component:SingleEventComponent},
   {path : "profil" , component:ProfileComponent},
   {path : "MotDePasseOublie" , component:ForgotPasswordComponent},
   {path : "resetPassword" , component:ResetPasswordComponent},
   {path : "reservation" , component:ReservationComponent},
-
+  
 ];
 
 @NgModule({

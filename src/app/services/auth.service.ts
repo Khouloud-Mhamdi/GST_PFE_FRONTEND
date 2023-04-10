@@ -68,5 +68,9 @@ export class AuthService {
   addInscription(user : any , id: any , idD:any, role:any ) : Observable<any> {
     return this.http.post(this.InscriURL + "/ajouter?id=" + id + "&idD=" + idD + "&role=" + role, user);
   }
+  // affichage de la liste des disciplines dans le profil : 
+  getDisciplineByUserId (id : any ) {
+   return this.http.get(this.InscriURL + "/users/" + id + "/disciplines") ; 
+  }
 
 }
