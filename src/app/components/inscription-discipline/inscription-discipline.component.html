@@ -23,7 +23,7 @@
  <!-- Alerte de confirmation -->
  <!--alert de succée -->
  <div class="alert alert-success" role="alert"  *ngIf="ajout" >
-  <strong class="d-block d-sm-inline-block-force"> Félicitation! vous demande d'inscription est enregistrée avec succés  </strong>
+  <strong class="d-block d-sm-inline-block-force"> Félicitation! votre demande d'inscription est enregistrée avec succés  </strong>
 </div>
  <!--alert alert d'erreur -->
 
@@ -189,7 +189,7 @@
                   <label for="nom">Matricule:</label>
                     <input type="text" class="form-control" id="matricule" formControlName="matricule" placeholder="Entrez votre matricule" [(ngModel)]="ValeurMatricule">
                    </div>
-                  
+
                    <div *ngIf ="(alerteMatricule)&&(clickInscrire)"  class="red"> Ce champ est obligatoire  </div>
               </div>
             </div>
@@ -199,6 +199,7 @@
               <div class="form-group">
                 <label for="modePaiement">Discipline : <span class="tx-danger">*</span></label>
                       <select class="form-select" aria-label="Default select example" formControlName="discipline" (change)="DisciplineChange($event)"  placeholder="Choisissez une discipline sportive">
+                        <option label="Choisir une discipline "></option>
                         <option  *ngFor="let d of disciplines " value="{{d?.id}}">{{d?.discipline}}</option>
 
 
@@ -213,7 +214,7 @@
               <div class="form-group">
                 <label for="modePaiement">Mode de paiement : </label>
                       <select class="form-select" aria-label="Default select example" formControlName="mode_paiement" placeholder="Choissisez un mode de paiement">
-                        
+                        <option label="Choisir un mode de paiement "></option>
                         <option value="especes" >Espèces</option>
                         <option value="banque">Banque</option>
 

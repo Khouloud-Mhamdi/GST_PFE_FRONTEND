@@ -189,7 +189,7 @@ export class InscriptionDisciplineComponent implements OnInit {
   controleSaisieDate(): boolean {
     const dateInput = document.getElementById("date") as HTMLInputElement;
 
-    if (this.addFamilleForm.value.date) {
+    if (!this.addFamilleForm.value.date_naissance) {
       dateInput.classList.add("invalid");
       return false;
     } else {
@@ -358,7 +358,7 @@ export class InscriptionDisciplineComponent implements OnInit {
       this.authService.addInscription(this.Inscription , this.user.id , this.addFamilleForm.value.discipline,'adherent').subscribe(
         (data) => {
           console.log('here inscri user: ', data);
-
+          this.addFamilleForm.reset();
            this.ajout = true;
           setTimeout(() => {
             this.ajout = false;
@@ -389,7 +389,7 @@ export class InscriptionDisciplineComponent implements OnInit {
         this.authService.addInscription(this.Inscription , this.membreFamille.id, this.addFamilleForm.value.discipline,'membre').subscribe(
           (data) => {
             console.log('Inscription ajouté: ', data);
-
+            this.addFamilleForm.reset();
              this.ajout = true;
             setTimeout(() => {
               this.ajout = false;
