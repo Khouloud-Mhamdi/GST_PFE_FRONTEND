@@ -347,7 +347,7 @@ export class InscriptionDisciplineComponent implements OnInit {
     stegiste: this.addFamilleForm.value.stegiste
   };
     this.authService.updateUser(this.userUpdate).subscribe(
-      (data) => {
+      (data) => { this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data;  } );
         console.log('here updated user: ', data);
 
       },(err) => {
@@ -434,7 +434,7 @@ export class InscriptionDisciplineComponent implements OnInit {
       stegiste: this.addFamilleForm.value.stegiste
     };
     this.authService.updateUser(this.userUpdateFamilly).subscribe(
-      (data) => {
+      (data) => { this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data;  } );
 
       },(err) => {
       console.log("update grave");
