@@ -91,14 +91,14 @@ export class ProfileComponent implements OnInit {
             this.update = true;
             setTimeout(() => {
               this.update = false;
-            }, 3000); // 3000 ms = 3 secondes
+            }, 7000);
           },
           (err) => {
             console.log('probleme !!! ', err);
             this.erreur = true;
             setTimeout(() => {
               this.erreur = false;
-            }, 3000); // 3000 ms = 3 secondes
+            }, 7000); 
           }
         );
 

@@ -326,7 +326,7 @@ export class InscriptionDisciplineComponent implements OnInit {
       console.log("erreur grave");
       setTimeout(() => {
         this.valid = false;
-      }, 3000);
+      }, 8000);
   }
 
     else{
@@ -356,7 +356,7 @@ export class InscriptionDisciplineComponent implements OnInit {
         this.valid=true;
         setTimeout(() => {
           this.valid = false;
-        }, 6000); // 3000 ms = 3 secondes
+        }, 8000); // 3000 ms = 3 secondes
       }
       );
       this.Inscription ={
@@ -371,14 +371,14 @@ export class InscriptionDisciplineComponent implements OnInit {
            this.ajout = true;
           setTimeout(() => {
             this.ajout = false;
-          }, 6000); // 3000 ms = 3 secondes
+          }, 8000); // 3000 ms = 3 secondes
         },(err) => {
           console.log("here error from BE", err);
 
           this.valid=true;
           setTimeout(() => {
             this.valid = false;
-          }, 6000); // 3000 ms = 3 secondes
+          }, 8000); // 3000 ms = 3 secondes
         }
         );
 
@@ -402,13 +402,13 @@ export class InscriptionDisciplineComponent implements OnInit {
              this.ajout = true;
             setTimeout(() => {
               this.ajout = false;
-            }, 6000); // 3000 ms = 3 secondes
+            }, 8000); // 3000 ms = 3 secondes
           },(err) => {
 
             this.valid=true;
             setTimeout(() => {
               this.valid = false;
-            }, 6000); // 3000 ms = 3 secondes
+            }, 8000); // 3000 ms = 3 secondes
           }
           );
     },
@@ -416,7 +416,7 @@ export class InscriptionDisciplineComponent implements OnInit {
        this.valid=true;
         setTimeout(() => {
           this.valid = false;
-        }, 6000); // 3000 ms = 3 secondes
+        }, 8000); // 3000 ms = 3 secondes
       }
 
 
@@ -441,7 +441,7 @@ export class InscriptionDisciplineComponent implements OnInit {
         this.valid=true;
         setTimeout(() => {
           this.valid = false;
-        }, 6000); // 3000 ms = 3 secondes
+        }, 8000); // 3000 ms = 3 secondes
       }
       );}
  }};
