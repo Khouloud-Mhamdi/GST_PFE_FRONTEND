@@ -15,8 +15,8 @@ export class ProfileComponent implements OnInit {
   update = false ;
   erreur = false ;
   valid=false;
-  afficheDiscipline = false ; 
-  disciplines : any ; 
+  afficheDiscipline = false ;
+  disciplines : any ;
   constructor(private token: TokenStorageService , private authService : AuthService , private router : Router) { }
 
   ngOnInit(): void {
@@ -26,7 +26,7 @@ export class ProfileComponent implements OnInit {
     this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data;});
     this.user.id = this.currentUser.id ;
 
-   this.afficherDisciplines() ; 
+   this.afficherDisciplines() ;
   }
   EditCurrentUser() {
     if ((!this.controleSaisieNom()) || (!this.controleSaisiePrénom()) || (!this.controleSaisieEmail())) {
@@ -107,6 +107,7 @@ export class ProfileComponent implements OnInit {
         this.currentUser.lastName = this.user.prenom;
         this.token.saveUser(this.currentUser);
         this.closeConfirmationDialog();
+        window.scrollTo(0, 0);
       }
     }
   }
@@ -162,16 +163,16 @@ export class ProfileComponent implements OnInit {
    afficherDisciplines () {
        this.authService.getDisciplineByUserId(this.currentUser.id).subscribe(
         (data) => {
-          console.log ("liste de disciplines : " , data ) ; 
-          this.disciplines = data ; 
+          console.log ("liste de disciplines : " , data ) ;
+          this.disciplines = data ;
           if (this.disciplines.length === 0) {
             console.log("La liste de disciplines est vide.");
-            this.afficheDiscipline = false ; 
+            this.afficheDiscipline = false ;
           } else {
             console.log("La liste de disciplines n'est pas vide.");
-            this.afficheDiscipline = true ; 
+            this.afficheDiscipline = true ;
           }
         }
-       ); 
+       );
    }
 }

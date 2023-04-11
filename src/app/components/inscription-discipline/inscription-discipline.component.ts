@@ -62,7 +62,7 @@ export class InscriptionDisciplineComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
-    this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data; console.log(data); } );
+    this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data;  } );
        this.getAllclubs();
        this.addFamilleForm= this.formBuilder.group({
         nom: ["", [Validators.required, Validators.minLength(3)]],
@@ -106,6 +106,7 @@ export class InscriptionDisciplineComponent implements OnInit {
 
   onRelationChange(event: any) {
     this.selectedRelation = event.target.value;
+    this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data;  } );
     if(this.user.stegiste!==null)
        {
         this.alerteStegiste=false;
@@ -366,7 +367,7 @@ export class InscriptionDisciplineComponent implements OnInit {
       this.authService.addInscription(this.Inscription , this.user.id , this.addFamilleForm.value.discipline,'adherent').subscribe(
         (data) => {
           console.log('here inscri user: ', data);
-          this.addFamilleForm.reset();
+            //this.addFamilleForm.reset();
            this.ajout = true;
           setTimeout(() => {
             this.ajout = false;
@@ -397,7 +398,7 @@ export class InscriptionDisciplineComponent implements OnInit {
         this.authService.addInscription(this.Inscription , this.membreFamille.id, this.addFamilleForm.value.discipline,'membre').subscribe(
           (data) => {
             console.log('Inscription ajouté: ', data);
-            this.addFamilleForm.reset();
+
              this.ajout = true;
             setTimeout(() => {
               this.ajout = false;
