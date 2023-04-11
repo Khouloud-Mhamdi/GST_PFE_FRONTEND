@@ -28,6 +28,7 @@ export class HeaderComponent implements OnInit {
       }
       else {
         this.router.navigate(['Login']);
+         
       }
     }
     Inscription(){
