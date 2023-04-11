@@ -7,5 +7,27 @@
   <app-info-section></app-info-section>
   <app-apropos-section></app-apropos-section>
   <app-disciplines-section></app-disciplines-section>
-  <app-event-page></app-event-page>
+  <section id="hero-animated" class="hero-animated d-flex align-items-center">
+    <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
+      <h2> Nos <span>Evènements </span></h2>
+    </div>
+  </section>
+  <section id="recent-blog-posts" class="recent-blog-posts">
+
+    <div class="container" data-aos="fade-up">
+
+      
+      
+          <div  class="row">
+          <div *ngFor="let event of eventService.listData " class="col-lg-4" >
+           
+            <app-one-event [eventInput]="event"></app-one-event>
+            
+          </div>
+        </div>
+          
+
+    </div>
+
+  </section>
   </main><!-- End #main -->
