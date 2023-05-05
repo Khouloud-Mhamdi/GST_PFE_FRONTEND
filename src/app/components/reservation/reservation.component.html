@@ -3,3 +3,14 @@
       <h2> R <span>eserver </span></h2>
     </div>
   </section>
+  <full-calendar #calendar [options]="calendarOptions"></full-calendar>
+
+<ng-template #eventTemplate let-event="event">
+  <div class="fc-content">
+    <div class="fc-title">{{ event.title }}</div>
+    <div class="fc-actions">
+      <button class="btn btn-sm btn-danger" >Supprimer</button>
+      <button class="btn btn-sm btn-primary" >Modifier</button>
+    </div>
+  </div>
+</ng-template>
