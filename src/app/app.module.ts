@@ -35,7 +35,11 @@ import { FullCalendarModule } from '@fullcalendar/angular'; // must go before pl
 
 import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
+<<<<<<< HEAD
 import { ValiderReservationComponent } from './components/valider-reservation/valider-reservation.component';
+=======
+import { SelectionTerrainReservationComponent } from './components/selection-terrain-reservation/selection-terrain-reservation.component';
+>>>>>>> eaad4c44f3941e61683e5d46ab1734be0c60e838
 
 
 @NgModule({
@@ -68,7 +72,10 @@ import { ValiderReservationComponent } from './components/valider-reservation/va
     ReservationComponent,
     InscriptionDisciplineComponent,
     OneEventComponent,
+
     ValiderReservationComponent,
+    SelectionTerrainReservationComponent,
+
    
 
 ],
