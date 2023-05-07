@@ -31,7 +31,10 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { InscriptionDisciplineComponent } from './components/inscription-discipline/inscription-discipline.component';
 import { OneEventComponent } from './components/one-event/one-event.component';
+import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
 
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import interactionPlugin from '@fullcalendar/interaction';
 
 
 @NgModule({
@@ -73,7 +76,7 @@ import { OneEventComponent } from './components/one-event/one-event.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    
+    FullCalendarModule
 
   ],
   providers: [],
