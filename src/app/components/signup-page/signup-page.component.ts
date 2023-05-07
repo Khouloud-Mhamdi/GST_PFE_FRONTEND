@@ -93,7 +93,7 @@ export class SignupPageComponent implements OnInit {
 
     const nomInput = document.getElementById("firstName") as HTMLInputElement;
     console.log(nomInput);
-    const regex =/^[a-zA-Z]{3,}$/ ;
+    const regex = /^[a-zA-Z\s]{3,}$/;
     if (!regex.test(this.signupForm.value.firstName)) {
       nomInput.classList.add("invalid");
 
@@ -107,7 +107,7 @@ export class SignupPageComponent implements OnInit {
 
     const nomInput = document.getElementById("lastName") as HTMLInputElement;
     console.log(nomInput);
-    const regex =/^[a-zA-Z]{3,}$/ ;
+    const regex = /^[a-zA-Z\s]{3,}$/;
     if (!regex.test(this.signupForm.value.lastName)) {
       nomInput.classList.add("invalid");
 

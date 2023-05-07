@@ -31,7 +31,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { ReservationComponent } from './components/reservation/reservation.component';
 import { InscriptionDisciplineComponent } from './components/inscription-discipline/inscription-discipline.component';
 import { OneEventComponent } from './components/one-event/one-event.component';
-import { FullCalendarModule } from '@fullcalendar/angular';
+
 
 
 @NgModule({
@@ -73,7 +73,7 @@ import { FullCalendarModule } from '@fullcalendar/angular';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    FullCalendarModule 
+
 
 
   ],

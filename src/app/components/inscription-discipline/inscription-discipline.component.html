@@ -171,13 +171,13 @@
               <br>
               <label> Vous êtes :</label>
               <div class="form-check" >
-                <input class="form-check-input" type="radio" id="adherent"  [(ngModel)]="stegiste"name="stegiste" value="stegiste" formControlName="stegiste"  (change)="onRoleChange($event)">
+                <input class="form-check-input" type="radio" id="adherent"  [(ngModel)]="stegiste" name="stegiste" value="stegiste" formControlName="type"  (change)="onRoleChange($event)">
                 <label class="form-check-label" for="myself">
                   Agent Steg
                 </label>
               </div>
               <div class="form-check">
-                <input class="form-check-input" type="radio" id="enfant"  [(ngModel)]="stegiste" name="stegiste" value="non_stegiste" formControlName="stegiste"  (change)="onRoleChange($event)">
+                <input class="form-check-input" type="radio" id="enfant"  [(ngModel)]="stegiste" name="stegiste" value="non_stegiste" formControlName="type"  (change)="onRoleChange($event)">
                 <label class="form-check-label" for="child">
                   Abonné ordinaire
                 </label>
