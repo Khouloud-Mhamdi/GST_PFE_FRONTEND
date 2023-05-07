@@ -17,6 +17,7 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { SignupPageComponent } from './components/signup-page/signup-page.component';
 import { SingleEventComponent } from './components/single-event/single-event.component';
 import { TennisPageComponent } from './components/tennis-page/tennis-page.component';
+import { ValiderReservationComponent } from './components/valider-reservation/valider-reservation.component';
 import { VolleyballPageComponent } from './components/volleyball-page/volleyball-page.component';
 
 const routes: Routes = [
@@ -38,7 +39,8 @@ const routes: Routes = [
   {path : "MotDePasseOublie" , component:ForgotPasswordComponent},
   {path : "resetPassword" , component:ResetPasswordComponent},
   {path : "reservation" , component:ReservationComponent},
-  
+  {path : "Validation" , component:ValiderReservationComponent},
+
 ];
 
 @NgModule({
