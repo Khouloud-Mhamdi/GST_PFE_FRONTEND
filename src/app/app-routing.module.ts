@@ -18,6 +18,7 @@ import { SignupPageComponent } from './components/signup-page/signup-page.compon
 import { SingleEventComponent } from './components/single-event/single-event.component';
 import { TennisPageComponent } from './components/tennis-page/tennis-page.component';
 import { VolleyballPageComponent } from './components/volleyball-page/volleyball-page.component';
+import { SelectionTerrainReservationComponent } from './components/selection-terrain-reservation/selection-terrain-reservation.component';
 
 const routes: Routes = [
 
@@ -38,6 +39,7 @@ const routes: Routes = [
   {path : "MotDePasseOublie" , component:ForgotPasswordComponent},
   {path : "resetPassword" , component:ResetPasswordComponent},
   {path : "reservation" , component:ReservationComponent},
+  {path : "selection" , component:SelectionTerrainReservationComponent},
   
 ];
 
