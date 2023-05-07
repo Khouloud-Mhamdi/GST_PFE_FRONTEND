@@ -5,9 +5,9 @@
   }
   
   .case {
-    background-color: #f0f2f5;
+    background-color: #d1d4da;
     border-radius: 5px;
-    width: calc(30.33% - 10px);
+    width: calc(31.33% - 10px);
     height: 95px;
     display: flex;
     align-items: center;
@@ -15,7 +15,7 @@
     flex-direction: column;
     position: relative;
     padding: 10px;
-    border: 2px solid #0f6b7d;
+    border: 2px solid #030607;
   }
   
   
@@ -23,7 +23,7 @@
     position: absolute;
     top: 10px;
     right: 10px;
-    width: 30px;
+    width: 20px;
     height: 30px;
   }
   
