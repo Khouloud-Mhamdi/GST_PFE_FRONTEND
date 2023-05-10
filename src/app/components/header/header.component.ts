@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
     reserver(){
       if(this.isLoggedIn())
       {
-        this.router.navigate(['reservation']);
+        this.router.navigate(['selection']);
       }
       else {
         this.router.navigate(['Login']);

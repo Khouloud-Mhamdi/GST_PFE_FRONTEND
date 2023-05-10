@@ -19,93 +19,21 @@
     <hr>
     <div class="cases-parent">
 
-      <div class="case">
-        <input type="radio" name="time" />
+      <div *ngFor="let horaire of horaires" class="case" [class.hors-service]="!isHoraireDisponible(horaire)" >
+        <input type="radio" name="time" [disabled]="!isHoraireDisponible(horaire)" [value]="horaire"  [(ngModel)]="selectedHoraire" (change)="onHoraireSelectionne()" />
         <div class="case-content">
-          <p class="time">09:00 AM - 10:00 AM</p>
-          <h3 class="title">Titre</h3>
+          <div class="meta-top">
+            <ul> 
+              <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2022-01-01"></time></a></li>
+            </ul>
+          </div>
+          <p class="time" >{{ horaire.hdebut }} - {{ horaire.hfin }}</p>
+         
         </div>
       </div>
-      <div class="case">
-        <input type="radio" name="time" />
-        <div class="case-content">
-          <p class="time">10:00 AM - 11:00 AM</p>
-          <h3 class="title">Titre</h3>
-        </div>
-      </div>
-      <div class="case">
-        <input type="radio" name="time" />
-        <div class="case-content">
-          <p class="time">11:00 AM - 12:00 PM</p>
-          <h3 class="title">Titre</h3>
-        </div>
-      </div>
-      <div class="case">
-        <input type="radio" name="time" />
-        <div class="case-content">
-          <p class="time">11:00 AM - 12:00 PM</p>
-          <h3 class="title">Titre</h3>
-        </div>
-      </div>
-      <div class="case">
-        <input type="radio" name="time" />
-        <div class="case-content">
-          <p class="time">11:00 AM - 12:00 PM</p>
-          <h3 class="title">Titre</h3>
-        </div>
-      </div>
-      <div class="case">
-        <input type="radio" name="time" />
-        <div class="case-content">
-          <p class="time">11:00 AM - 12:00 PM</p>
-          <h3 class="title">Titre</h3>
-        </div>
-      </div>
-
-      <div class="case">
-        <input type="radio" name="time" />
-        <div class="case-content">
-          <p class="time">09:00 AM - 10:00 AM</p>
-          <h3 class="title">Titre</h3>
-        </div>
-      </div>
-      <div class="case">
-        <input type="radio" name="time" />
-        <div class="case-content">
-          <p class="time">10:00 AM - 11:00 AM</p>
-          <h3 class="title">Titre</h3>
-        </div>
-      </div>
-      <div class="case">
-        <input type="radio" name="time" />
-        <div class="case-content">
-          <p class="time">11:00 AM - 12:00 PM</p>
-          <h3 class="title">Titre</h3>
-        </div>
-      </div>
-      <div class="case">
-        <input type="radio" name="time" />
-        <div class="case-content">
-          <p class="time">11:00 AM - 12:00 PM</p>
-          <h3 class="title">Titre</h3>
-        </div>
-      </div>
-      <div class="case">
-        <input type="radio" name="time" />
-        <div class="case-content">
-          <p class="time">11:00 AM - 12:00 PM</p>
-          <h3 class="title">Titre</h3>
-        </div>
-      </div>
-      <div class="case">
-        <input type="radio" name="time" />
-        <div class="case-content">
-          <p class="time">11:00 AM - 12:00 PM</p>
-          <h3 class="title">Titre</h3>
-        </div>
-      </div>
+      
       <div style="display: flex; justify-content: flex-end; width: 100%; margin-top: 20px;">
-        <button style="background-color: rgb(23, 161, 177); color: white; padding: 10px 20px; border-radius: 5px; border: none;">
+        <button  (click)="passer()" style="background-color: rgb(23, 161, 177); color: white; padding: 10px 20px; border-radius: 5px; border: none;">
             Passer à l'étape suivante &rarr;
         </button>
     </div>

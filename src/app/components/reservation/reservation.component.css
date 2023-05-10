@@ -15,7 +15,8 @@
     flex-direction: column;
     position: relative;
     padding: 10px;
-    border: 2px solid #030607;
+    border: 2px solid #010906;
+    color: #127750;
   }
   
   
@@ -42,3 +43,9 @@
     margin-top: 0;
   }
   
+  .hors-service {
+    color: rgb(216, 59, 59);
+  }
+  .class.test{
+    color: rgb(11, 107, 75);
+  }
