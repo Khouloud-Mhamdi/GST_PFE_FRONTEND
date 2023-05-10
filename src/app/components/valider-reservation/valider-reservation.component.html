@@ -18,11 +18,13 @@
           <h4 class="card-title mb-0">Confirmation de réservation</h4>
         </div>
         <div class="card-body">
-          <p class="card-text">Terrain de tennis numéro<strong> 1</strong></p>
-          <p class="card-text">Le <strong>13 mai 2023</strong> </p>
-          <p class="card-text">De <strong>10:00</strong>  à<strong>11:00</strong></p>
+          <p class="card-text">Terrain de tennis numéro<strong> {{obj.id_terrain}}</strong></p>
+          <p class="card-text">Le <strong>{{obj.dateClicked}}</strong> </p>
+          <div *ngFor="let horaire of obj.selectedHoraires" >
+          <p class="card-text">De <strong>{{horaire.hdebut}}</strong>  à <strong>{{horaire.hfin}}</strong></p>
+          </div>
           <div class="text-center">
-            <button class="btn btn-primary">Confirmer la réservation</button>
+            <button class="btn btn-primary" (click)="addReservation()">Confirmer la réservation</button>
             <button type="button" class="btn btn-secondary ml-2" style="margin-left:10px ;">Annuler</button>
           </div>
 

@@ -4,7 +4,7 @@ import interactionPlugin from '@fullcalendar/interaction'; // import the interac
 import dayGridPlugin from '@fullcalendar/daygrid';
 import { format } from 'date-fns';
 import { ReservationService } from 'src/app/services/reservation.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
@@ -12,15 +12,25 @@ import { Router } from '@angular/router';
 })
 export class ReservationComponent implements OnInit {
 
-  constructor(private reservationService : ReservationService ,private router: Router  ) { }
-  selectedHoraire: any;
-  horairesNonDispo: string[][] = [];
+  constructor(private reservationService : ReservationService ,private router: Router , private activatedRoute : ActivatedRoute ) { }
+  //selectedHoraire : any ;
+ 
+  selectedHoraires: any[] = [];
+  id_terrain : any ; 
   dateClicked : any
+  horairesNonDispo: string[][] = [];
   oneEvent = {
     title : '' ,
     start : '' ,
     color : '' ,
   }
+  Myobj = {
+    selectedHoraires:[
+      { horaire: '-', autrePropriete: '-' }
+    ], 
+    id_terrain: '',
+    dateClicked:''
+  };
   horaires : any =[
     {hdebut:'08:00' , hfin:'09:00'} , 
     {hdebut:'09:00' , hfin:'10:00'} , 
@@ -70,7 +80,7 @@ export class ReservationComponent implements OnInit {
     this.oneEvent.start = selectInfo.startStr;
     this.events.push(this.oneEvent);
     console.log(this.events) ;
-    this.reservationService.getReservationsByDate(this.oneEvent.start ,5 ).subscribe(
+    this.reservationService.getReservationsByDate(this.oneEvent.start ,this.id_terrain ).subscribe(
       data => {
         this.horairesNonDispo = data;
         console.log('Horaires récupérés avec succès:', this.horairesNonDispo);
@@ -87,25 +97,45 @@ export class ReservationComponent implements OnInit {
     }
   ngOnInit(): void {
 
-    const date = new Date('2023-05-12');
+   
     console.log(this.horaires) ; 
+    this.id_terrain = this.activatedRoute.snapshot.paramMap.get("id"); 
+    console.log("id terrain est : " , this.id_terrain) ; 
    
   }
-  /*onHoraireSelectionne(horaire: any) {
-    this.selectedHoraire = horaire;
-    console.log(this.selectedHoraire); // Afficher la valeur sélectionnée dans la console
-}*/
-onHoraireSelectionne() {
-  console.log(this.selectedHoraire); // Afficher l'objet horaire sélectionné dans la console
-}
- 
+  onCheckboxSelectionne(event: any, horaire: any) {
+    const isChecked = event.target.checked;
+    if (isChecked) {
+      this.selectedHoraires.push(horaire);
+    } else {
+      const index = this.selectedHoraires.findIndex((h: any) => h.hdebut === horaire.hdebut && h.hfin === horaire.hfin);
+      if (index !== -1) {
+        this.selectedHoraires.splice(index, 1);
+      }
+    }
+    console.log(this.selectedHoraires);
+  }
+
+  
+
+
+
   isHoraireDisponible(horaire: any): boolean {
     // Vérifier si l'horaire est dans la liste des horaires non disponibles
     const horaireNonDispo = this.horairesNonDispo.find(h => h[0] == horaire.hdebut && h[1] == horaire.hfin);
     return !horaireNonDispo;
  }
  passer() {
+  this.Myobj.id_terrain = this.id_terrain ; 
+  this.Myobj.selectedHoraires = this.selectedHoraires ; 
+  this.Myobj.dateClicked = this.oneEvent.start ; 
+  let objStr = JSON.stringify(this.Myobj);
+  sessionStorage.setItem('reservation', objStr);
   this.router.navigate(['/Validation']);
  }
+ retour() {
+  this.router.navigate(['selection']) ; 
+ }
+ 
 }
 

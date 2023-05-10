@@ -45,7 +45,20 @@
   
   .hors-service {
     color: rgb(216, 59, 59);
+    border: 2px solid rgb(216, 59, 59);
   }
   .class.test{
     color: rgb(11, 107, 75);
   }
+
+  .case label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .case label input[type="checkbox"] {
+    margin-right: 50px;
+    transform: scale(2);
+  }
+  

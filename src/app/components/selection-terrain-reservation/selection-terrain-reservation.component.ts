@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-selection-terrain-reservation',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SelectionTerrainReservationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router : Router ) { }
 
   ngOnInit(): void {
   }
-
+  goToNextPage(id : any ) {
+    this.router.navigate([`/reservation/${id}`]); 
+   }
 }
