@@ -3,12 +3,29 @@
     <h2>Mes <span>Réservations</span></h2>
   </div>
 </section>
+<!-- Alerte de confirmation -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-danger confirmation-dialog" role="alert" *ngIf="showConfirmationDialog">
+        <h4 class="alert-heading">Confirmation d'annulation</h4>
+        <p>Voulez-vous annuler cette réservation ?</p>
+        <hr>
+        <div class="button-container">
+          <button class="btn btn-danger confirm-button" (click)="annuler()">Oui</button>
+          <button class="btn btn-secondary cancel-button" (click)="closeConfirmationDialog()">Non</button>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-12 mt-5">
       <div class="d-flex flex-wrap">
-        <div class="card shadow-lg col-md-4" *ngFor="let r of reservations">
+        <div class="card shadow-lg col-md-4" *ngFor="let r of reservations" style="margin-bottom:10px;">
           <div class="card-body">
             <div class="card-header bg-primary text-white">
               <h4 class="card-title mb-0">Réservation</h4>
@@ -18,7 +35,7 @@
             <p class="card-text">De <strong>{{r.hdebut}}</strong>  à<strong>{{r.hfin}}</strong></p>
             <p class="card-text">Status : <strong> {{r.status}}</strong></p>
             <div class="text-center">
-              <button type="button" class="btn btn-secondary ml-2" *ngIf="r.status!='refusée'" (click)="annuler(r.id_reservation)">Annuler</button>
+              <button type="button" class="btn btn-secondary ml-2" *ngIf="r.status!='refusée'" (click)="openConfirmationDialog(r.id_reservation)">Annuler</button>
             </div>
           </div>
         </div>

@@ -11,22 +11,32 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 export class ListeReservationsComponent implements OnInit {
   currentUser: any;
   reservations:any;
+  idUser :any;
+  showConfirmationDialog = false ;
   constructor(private token: TokenStorageService,  private router : Router ,private reservationService : ReservationService) { }
 
   ngOnInit(): void {
     this.currentUser = this.token.getUser();
     this.reservationService.getReservtionsByAdherent(this.currentUser.id).subscribe(data=>{
-    
+
       this.reservations=data;
     })
 
   }
-  annuler(id : any)
-  { this.reservationService.annulerReservatiion(id).subscribe((data)=> {
+  annuler()
+  { this.reservationService.annulerReservatiion(this.idUser).subscribe((data)=> {
     this.reservationService.getReservtionsByAdherent(this.currentUser.id).subscribe(data=>{
-    
+
       this.reservations=data;
     })
-  }) }
+  });this.showConfirmationDialog = false; }
+  openConfirmationDialog(id : any ){
+    this.idUser=id;
+    this.showConfirmationDialog = true;
+  }
+
+  closeConfirmationDialog(){
+    this.showConfirmationDialog = false;
+  }
 
 }
