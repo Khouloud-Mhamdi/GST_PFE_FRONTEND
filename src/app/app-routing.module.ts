@@ -20,6 +20,7 @@ import { TennisPageComponent } from './components/tennis-page/tennis-page.compon
 import { ValiderReservationComponent } from './components/valider-reservation/valider-reservation.component';
 import { VolleyballPageComponent } from './components/volleyball-page/volleyball-page.component';
 import { SelectionTerrainReservationComponent } from './components/selection-terrain-reservation/selection-terrain-reservation.component';
+import { ListeReservationsComponent } from './components/liste-reservations/liste-reservations.component';
 
 const routes: Routes = [
 
@@ -42,7 +43,7 @@ const routes: Routes = [
   {path : "reservation" , component:ReservationComponent},
 
   {path : "Validation" , component:ValiderReservationComponent},
-
+  {path : "ListeRéservations" , component:ListeReservationsComponent},
 
   {path : "selection" , component:SelectionTerrainReservationComponent},
 

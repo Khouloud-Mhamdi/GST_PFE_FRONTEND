@@ -22,4 +22,10 @@ export class ReservationService {
     const url = `${this.host}/reservations?date=${date}&terrainId=${terrainId}`;
     return this.http.get(url);
   }*/
+  getReservtionsByAdherent(id: number): Observable<Object> {
+    return this.http.get(this.host +"/consultation/"+ id);
+  }
+  annulerReservatiion(resId:any) :Observable<Object> {
+    return this.http.get(this.host +"/annuler/"+ resId);
+  }
 }
