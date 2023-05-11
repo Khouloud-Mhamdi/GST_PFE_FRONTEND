@@ -7,7 +7,7 @@
   <div class="col-md-5 mt-3">
     <h1 class="text-muted mb-6 text-center">Etape 2 : Choisir un créneau </h1>
     <hr>
-    <button (click)="toggleWeekends()">Affiher weekends</button>
+    <button (click)="toggleWeekends()">Afficher weekends</button>
     <full-calendar [options]="calendarOptions"></full-calendar>
   </div>
   <div class="col-md-7 mt-3">
@@ -19,24 +19,31 @@
     <hr>
     <div class="cases-parent">
 
-      <div *ngFor="let horaire of horaires" class="case" [class.hors-service]="!isHoraireDisponible(horaire)" >
-        <input type="radio" name="time" [disabled]="!isHoraireDisponible(horaire)" [value]="horaire"  [(ngModel)]="selectedHoraire" (change)="onHoraireSelectionne()" />
-        <div class="case-content">
-          <div class="meta-top">
-            <ul> 
-              <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2022-01-01"></time></a></li>
-            </ul>
+      <div *ngFor="let horaire of horaires" class="case" [class.hors-service]="!isHoraireDisponible(horaire)">
+        <label>
+          <input type="checkbox" [disabled]="!isHoraireDisponible(horaire)" [value]="horaire" (change)="onCheckboxSelectionne($event , horaire )" />
+          <div class="case-content">
+            <div class="meta-top">
+              <ul>
+                <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="blog-details.html"><time datetime="2022-01-01"></time></a></li>
+              </ul>
+            </div>
+            <p class="time">{{ horaire.hdebut }} - {{ horaire.hfin }}</p>
           </div>
-          <p class="time" >{{ horaire.hdebut }} - {{ horaire.hfin }}</p>
-         
-        </div>
+        </label>
       </div>
       
-      <div style="display: flex; justify-content: flex-end; width: 100%; margin-top: 20px;">
-        <button  (click)="passer()" style="background-color: rgb(23, 161, 177); color: white; padding: 10px 20px; border-radius: 5px; border: none;">
-            Passer à l'étape suivante &rarr;
-        </button>
-    </div>
+      <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 20px;">
+        <div>
+          <button style="float: left; background-color: rgb(23, 161, 177); color: white; padding: 10px 20px; border-radius: 5px; border: none;" > &larr; Retour à l'étape précédente</button>
+
+        </div>
+        <div>
+          <button (click)="passer()" style="background-color: rgb(23, 161, 177); color: white; padding: 10px 20px; border-radius: 5px; border: none;">
+              Passer à l'étape suivante &rarr;
+          </button>
+        </div>
+      </div>
     </div>
   </div>
 </div>

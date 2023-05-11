@@ -40,7 +40,7 @@ const routes: Routes = [
   {path : "profil" , component:ProfileComponent},
   {path : "MotDePasseOublie" , component:ForgotPasswordComponent},
   {path : "resetPassword" , component:ResetPasswordComponent},
-  {path : "reservation" , component:ReservationComponent},
+  {path : "reservation/:id" , component:ReservationComponent},
 
   {path : "Validation" , component:ValiderReservationComponent},
   {path : "ListeRéservations" , component:ListeReservationsComponent},
