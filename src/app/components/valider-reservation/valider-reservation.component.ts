@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
@@ -17,9 +18,10 @@ export class ValiderReservationComponent implements OnInit {
     status : '' , 
   } ; 
   obj : any = {} ; 
-  constructor(private router : Router , private reservationService : ReservationService  , private token : TokenStorageService) { }
+  constructor(private titleService: Title,private router : Router , private reservationService : ReservationService  , private token : TokenStorageService) { }
   
   ngOnInit(): void {
+    this.titleService.setTitle('GST-Réserver un terrain');
     let objStr = sessionStorage.getItem('reservation');
     if (objStr !== null) {
      this.obj  = JSON.parse(objStr);

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
@@ -13,9 +14,10 @@ export class ListeReservationsComponent implements OnInit {
   reservations:any;
   idUser :any;
   showConfirmationDialog = false ;
-  constructor(private token: TokenStorageService,  private router : Router ,private reservationService : ReservationService) { }
+  constructor(private titleService: Title,private token: TokenStorageService,  private router : Router ,private reservationService : ReservationService) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('GST-Liste des réservations');
     this.currentUser = this.token.getUser();
     this.reservationService.getReservtionsByAdherent(this.currentUser.id).subscribe(data=>{
 

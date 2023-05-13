@@ -1,22 +1,23 @@
-<!-- ======= Header ======= -->
-<header id="header" class="header fixed-top" data-scrollto-offset="0">
+<div class="header-container">
+  <header id="header-top" class="header-top header1 fixed-top" data-scrollto-offset="0">
+    <div class="container-fluid d-flex align-items-center justify-content-end button-container">
+      
+      <button class="custom-btn" style="margin-right: 10px;" (click)="Inscription()">Devenir membre </button>
+      <button class="custom-btn" style="margin-right: 50px; margin-top: 5px;" (click)="reserver()">Réserver un terrain</button>
+    </div>
+  </header><!-- End Header Top -->
+  <header id="header-bottom" class="header-bottom  header2 fixed-top" data-scrollto-offset="0">
   <div class="container-fluid d-flex align-items-center justify-content-between">
-
     <a routerLink="" class="logo d-flex align-items-center scrollto me-auto me-lg-0">
       <!-- Uncomment the line below if you also wish to use an image logo -->
-       <img src="assets/photosGST/GST.png" alt="">
-
+      <img src="assets/photosGST/logoHeader.png" alt="" class="logo-image">
     </a>
-
     <nav id="navbar" class="navbar">
       <ul>
-
-        <li><a class="nav-link scrollto" routerLink=""><span> <strong>Acceuil</strong></span> </a>
-
-        </li>
-
-        <li><a class="nav-link scrollto" routerLink="apropos"> <strong>A propos</strong></a></li>
-        <li class="dropdown megamenu"><a href="#"><span><strong>Disciplines</strong></span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
+        <li><a class="nav-link scrollto" routerLink=""><span><strong>Accueil</strong></span></a></li>
+        <li><a class="nav-link scrollto" routerLink="apropos"><strong>A propos</strong></a></li>
+        <li class="dropdown megamenu">
+          <a href="#"><span><strong>Disciplines</strong></span> <i class="bi bi-chevron-down dropdown-indicator"></i></a>
           <ul>
             <li>
               <a routerLink="Tennis">Tennis</a>
@@ -31,27 +32,32 @@
             <li>
               <a href="PingPong">PingPong</a>
               <a href="Aikido">Aïkido</a>
-              <a href="#">Nattation</a>
+              <a href="#">Natation</a>
             </li>
-
           </ul>
         </li>
         <li><a class="nav-link scrollto" routerLink="events"><strong>Evénements</strong></a></li>
-        <li><a class="nav-link scrollto" routerLink="reservation" ><strong>Contact</strong></a></li>
-        <li><a class="nav-link scrollto" routerLink="profil" *ngIf="authService.roleMatch('ADHERENT')" ><strong>Mon Profil</strong></a></li>
-
-
-
-
-        <li class="dropdown"><a routerLink="signup" *ngIf="!isLoggedIn()" style="font-size: 15px;margin-left: 25px; text-decoration: underline;" ><span>S'inscrire</span> </a>
-          <li class="dropdown"><a routerLink="Login" *ngIf="!isLoggedIn()" style="font-size: 15px;text-decoration: underline;" ><span>Se connecter</span> </a></li>
-          <li class="dropdown" ><a (click)="LogOut ()"*ngIf="isLoggedIn()" style="font-size: 15px;text-decoration: underline;" ><span>Se deconnecter</span> </a></li>
+        <li><a class="nav-link scrollto" routerLink="Contact"><strong>Contact</strong></a></li>
+        
       </ul>
       <i class="bi bi-list mobile-nav-toggle d-none"></i>
     </nav><!-- .navbar -->
+    <div>
+      <a routerLink="signup" *ngIf="!isLoggedIn()" class="custom-link nav-link  d-inline-block" style=" margin-right: 20px; margin-left: 50px; ">
+        <span>Créer compte</span>
+      </a>
+      <a routerLink="Login" *ngIf="!isLoggedIn()" class="custom-link nav-link  d-inline-block" style="margin-right: 50px;" >
+        <span>Se connecter</span>
+      </a>
+      <a routerLink="profil" *ngIf="authService.roleMatch('ADHERENT')" class="custom-link nav-link  d-inline-block" style="margin-right: 30px;" >
+        <span>Profil</span>
+      </a>
+      <a (click)="LogOut()" *ngIf="isLoggedIn()" class="custom-link nav-link  d-inline-block" >
+        <span>Se déconnecter</span>
+      </a>
+     
 
-    <a class="btn-getstarted scrollto"  (click)="reserver()" >Réserver</a>
-    <a class="btn-getstarted scrollto" (click)="Inscription()">Devenir membre</a>
-
-  </div>
-</header><!-- End Header -->
+</div>
+</div>
+</header>
+</div>

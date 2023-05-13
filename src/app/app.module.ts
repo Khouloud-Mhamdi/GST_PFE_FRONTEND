@@ -40,6 +40,7 @@ import { SelectionTerrainReservationComponent } from './components/selection-ter
 import { ListeReservationsComponent } from './components/liste-reservations/liste-reservations.component';
 
 
+
 @NgModule({
   declarations: [
 
@@ -74,6 +75,7 @@ import { ListeReservationsComponent } from './components/liste-reservations/list
     ValiderReservationComponent,
     SelectionTerrainReservationComponent,
     ListeReservationsComponent,
+   
 
    
 

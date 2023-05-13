@@ -5,6 +5,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import { format } from 'date-fns';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
@@ -12,7 +13,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ReservationComponent implements OnInit {
 
-  constructor(private reservationService : ReservationService ,private router: Router , private activatedRoute : ActivatedRoute ) { }
+  constructor(private titleService: Title,private reservationService : ReservationService ,private router: Router , private activatedRoute : ActivatedRoute ) { }
   //selectedHoraire : any ;
  
   selectedHoraires: any[] = [];
@@ -97,7 +98,7 @@ export class ReservationComponent implements OnInit {
     }
   ngOnInit(): void {
 
-   
+    this.titleService.setTitle('GST-Réserver un terrain');
     console.log(this.horaires) ; 
     this.id_terrain = this.activatedRoute.snapshot.paramMap.get("id"); 
     console.log("id terrain est : " , this.id_terrain) ; 

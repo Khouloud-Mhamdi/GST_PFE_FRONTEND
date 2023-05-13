@@ -10,7 +10,7 @@ export class HandballPageComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Disciplines - Handball');
+    this.titleService.setTitle('GST-Disciplines | Handball');
   }
 
 }

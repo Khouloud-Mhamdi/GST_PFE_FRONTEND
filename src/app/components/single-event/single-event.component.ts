@@ -14,7 +14,7 @@ export class SingleEventComponent implements OnInit {
   constructor(private titleService: Title , private activatedRoute : ActivatedRoute , public eventService : EventService) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Page evenement');
+    this.titleService.setTitle('GST-Evénement');
     this.id = this.activatedRoute.snapshot.paramMap.get("id"); 
     this.eventService.getData(this.id).subscribe((data)=> {this.event = data }) ; 
   } 

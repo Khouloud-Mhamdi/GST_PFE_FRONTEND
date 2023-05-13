@@ -11,7 +11,7 @@ export class TennisPageComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Disciplines - Tennis');
+    this.titleService.setTitle('GST-Disciplines | Tennis');
   }
 
 }

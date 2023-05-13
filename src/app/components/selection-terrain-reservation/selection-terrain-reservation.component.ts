@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 
 import { ReservationService } from 'src/app/services/reservation.service';
@@ -11,9 +12,10 @@ import { ReservationService } from 'src/app/services/reservation.service';
 export class SelectionTerrainReservationComponent implements OnInit {
 
 
-  constructor(private reservationService : ReservationService ,private router: Router) { }
+  constructor(private titleService: Title ,private reservationService : ReservationService ,private router: Router) { }
 
   ngOnInit(): void {
+    this.titleService.setTitle('GST-Réserver un terrain');
   }
   passer() {
     this.router.navigate(['/ListeRéservations']);

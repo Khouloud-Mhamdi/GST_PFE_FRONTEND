@@ -12,13 +12,13 @@ export class HomeComponent implements OnInit {
   constructor(private titleService: Title , public eventService : EventService) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Acceuil');
-    this.getData() ; 
+    this.titleService.setTitle('GST-Acceuil');
+    this.getData() ;
   }
   getData() {
     this.eventService.getAll().subscribe(
       response =>{this.eventService.listData = response;}
      );
-   
+
   }
 }
