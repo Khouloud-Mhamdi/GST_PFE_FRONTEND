@@ -13,9 +13,14 @@
   <div class="col-md-7 mt-3">
     <br>
     <br>
+    <!--alert alert d'erreur -->
+
+    <div class="alert alert-danger" role="alert"  *ngIf="alerte" >
+  <strong class="d-block d-sm-inline-block-force"> Veuillez choisir une date et un créneau  </strong>
+   </div>
     <br>
     <br>
-    
+    <p>{{oneEvent.start }}</p>
     <hr>
     <div class="cases-parent">
 
@@ -35,7 +40,7 @@
       
       <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 20px;">
         <div>
-          <button style="float: left; background-color: rgb(23, 161, 177); color: white; padding: 10px 20px; border-radius: 5px; border: none;" > &larr; Retour à l'étape précédente</button>
+          <button style="float: left; background-color: rgb(23, 161, 177); color: white; padding: 10px 20px; border-radius: 5px; border: none;" (click)="retour()"> &larr; Retour à l'étape précédente</button>
 
         </div>
         <div>

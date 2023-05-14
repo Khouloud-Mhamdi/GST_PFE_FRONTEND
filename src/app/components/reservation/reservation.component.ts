@@ -14,7 +14,8 @@ export class ReservationComponent implements OnInit {
 
   constructor(private reservationService : ReservationService ,private router: Router , private activatedRoute : ActivatedRoute ) { }
   //selectedHoraire : any ;
- 
+  alerte = false ; 
+  dateActuelle : any ; 
   selectedHoraires: any[] = [];
   id_terrain : any ; 
   dateClicked : any
@@ -47,10 +48,7 @@ export class ReservationComponent implements OnInit {
   ]
   calendarEvents: any  = [];
   events:any = [
-    {title : 'Present' , start :'2023-03-01' , color:'#0000FF' },
-    {title : 'Present' , start :'2023-03-03' , color:'#FF0000' },
-    {title : 'Absent' , start :'2023-03-10' , color:'#FF0000' },
-    {title : 'En attente' , start :'2023-05-04' , color:'#EFBA77' },
+    
   ];
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, interactionPlugin ],
@@ -59,8 +57,8 @@ export class ReservationComponent implements OnInit {
     events: this.events ,
     eventClick : this.handleDateClick.bind(this),// your event array
     selectable: true,
-    select: this.handleDateSelect.bind(this)
-
+    select: this.handleDateSelect.bind(this) , 
+    initialDate: new Date() , 
   };
 
   toggleWeekends() {
@@ -97,10 +95,23 @@ export class ReservationComponent implements OnInit {
     }
   ngOnInit(): void {
 
-   
-    console.log(this.horaires) ; 
     this.id_terrain = this.activatedRoute.snapshot.paramMap.get("id"); 
     console.log("id terrain est : " , this.id_terrain) ; 
+   
+    this.dateActuelle = this.calendarOptions.initialDate;  
+    this.oneEvent.start  = format(this.dateActuelle, 'yyyy-MM-dd'); // Formater la date initiale
+    console.log('La date actuelle :', this.oneEvent.start );
+    
+    this.reservationService.getReservationsByDate( this.oneEvent.start  ,this.id_terrain ).subscribe(
+      data => {
+        this.horairesNonDispo = data;
+        console.log('Horaires récupérés avec succès:', this.horairesNonDispo);
+      },
+      error => {
+        console.log('Une erreur est survenue lors de la récupération des horaires:', error);
+      }
+    );
+   
    
   }
   onCheckboxSelectionne(event: any, horaire: any) {
@@ -126,6 +137,14 @@ export class ReservationComponent implements OnInit {
     return !horaireNonDispo;
  }
  passer() {
+  if ((this.oneEvent.start=="") || (this.selectedHoraires.length == 0) ){
+     this.alerte = true ; 
+     setTimeout(() => {
+      this.alerte = false ; 
+    }, 3000);
+  }
+  else {
+    this.alerte = false ; 
   this.Myobj.id_terrain = this.id_terrain ; 
   this.Myobj.selectedHoraires = this.selectedHoraires ; 
   this.Myobj.dateClicked = this.oneEvent.start ; 
@@ -133,6 +152,8 @@ export class ReservationComponent implements OnInit {
   sessionStorage.setItem('reservation', objStr);
   this.router.navigate(['/Validation']);
  }
+  }
+  
  retour() {
   this.router.navigate(['selection']) ; 
  }

@@ -9,7 +9,26 @@
   <hr>
 
 </div>
-
+<!--alert de succée -->
+<div class="alert alert-success" role="alert"  *ngIf="confirm" >
+  <strong class="d-block d-sm-inline-block-force"> Votre demande est maintenant en attente  </strong>
+</div>
+<!-- Alerte de confirmation -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-success confirmation-dialog" role="alert" *ngIf="showConfirmationDialog">
+        <h4 class="alert-heading">Validation </h4>
+        <p>Voulez-vous confirmer votre reservation ?</p>
+        <hr>
+        <div class="button-container">
+          <button class="btn btn-success confirm-button" (click)="addReservation()">Enregistrer</button>
+          <button class="btn btn-secondary cancel-button" (click)="closeConfirmationDialog()">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-6 mt-5">
@@ -24,8 +43,8 @@
           <p class="card-text">De <strong>{{horaire.hdebut}}</strong>  à <strong>{{horaire.hfin}}</strong></p>
           </div>
           <div class="text-center">
-            <button class="btn btn-primary" (click)="addReservation()">Confirmer la réservation</button>
-            <button type="button" class="btn btn-secondary ml-2" style="margin-left:10px ;">Annuler</button>
+            <button class="btn btn-primary" (click)="openConfirmationDialog()">Confirmer la réservation</button>
+            <button type="button" class="btn btn-secondary ml-2" style="margin-left:10px ;" (click)="annuler()">Annuler</button>
           </div>
 
         </div>

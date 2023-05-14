@@ -9,6 +9,8 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   styleUrls: ['./valider-reservation.component.css']
 })
 export class ValiderReservationComponent implements OnInit {
+  confirm = false ; 
+  showConfirmationDialog = false ; 
   user : any ; 
   reservation = {
     date :'' , 
@@ -28,8 +30,11 @@ export class ValiderReservationComponent implements OnInit {
     this.user = this.token.getUser() ; 
    
   }
+  annuler(){
+    this.router.navigate(["/selection"]); 
+  }
   retourReservation(){
-    this.router.navigate(['reservation']);
+    this.router.navigate([`/reservation/${this.obj.id_terrain}`]); 
   }
   addReservation() {
     for (let i = 0; i < this.obj.selectedHoraires.length; i++) {
@@ -42,11 +47,23 @@ export class ValiderReservationComponent implements OnInit {
       this.reservationService.addReservation(this.reservation , this.user.id , this.obj.id_terrain).subscribe(
         (data) => {
           console.log('Reservation ajouté avec succée!  ', data);
+          this.confirm = true ; 
+          setTimeout(() => {
+            this.confirm = false  ; 
+            this.router.navigate(["/selection"]); 
+          }, 3000);
         },(err) => {
           console.log("here error from BE", err);
         }
         );
-
     }
+    this.closeConfirmationDialog() ; 
+  }
+  openConfirmationDialog(){
+    this.showConfirmationDialog = true;
+  }
+
+  closeConfirmationDialog(){
+    this.showConfirmationDialog = false;
   }
 }
