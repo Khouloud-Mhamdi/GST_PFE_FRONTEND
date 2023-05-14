@@ -15,9 +15,10 @@ export class ReservationComponent implements OnInit {
 
   constructor(private titleService: Title,private reservationService : ReservationService ,private router: Router , private activatedRoute : ActivatedRoute ) { }
   //selectedHoraire : any ;
- 
+  alerte = false ;
+  dateActuelle : any ;
   selectedHoraires: any[] = [];
-  id_terrain : any ; 
+  id_terrain : any ;
   dateClicked : any
   horairesNonDispo: string[][] = [];
   oneEvent = {
@@ -28,30 +29,27 @@ export class ReservationComponent implements OnInit {
   Myobj = {
     selectedHoraires:[
       { horaire: '-', autrePropriete: '-' }
-    ], 
+    ],
     id_terrain: '',
     dateClicked:''
   };
   horaires : any =[
-    {hdebut:'08:00' , hfin:'09:00'} , 
-    {hdebut:'09:00' , hfin:'10:00'} , 
-    {hdebut:'10:00' , hfin:'11:00'} , 
-    {hdebut:'11:00' , hfin:'12:00'} , 
-    {hdebut:'12:00' , hfin:'13:00'} , 
-    {hdebut:'13:00' , hfin:'14:00'} , 
-    {hdebut:'14:00' , hfin:'15:00'} , 
-    {hdebut:'15:00' , hfin:'16:00'} , 
-    {hdebut:'16:00' , hfin:'17:00'} , 
-    {hdebut:'17:00' , hfin:'18:00'} , 
-    {hdebut:'18:00' , hfin:'19:00'} , 
-    {hdebut:'19:00' , hfin:'20:00'} , 
+    {hdebut:'08:00' , hfin:'09:00'} ,
+    {hdebut:'09:00' , hfin:'10:00'} ,
+    {hdebut:'10:00' , hfin:'11:00'} ,
+    {hdebut:'11:00' , hfin:'12:00'} ,
+    {hdebut:'12:00' , hfin:'13:00'} ,
+    {hdebut:'13:00' , hfin:'14:00'} ,
+    {hdebut:'14:00' , hfin:'15:00'} ,
+    {hdebut:'15:00' , hfin:'16:00'} ,
+    {hdebut:'16:00' , hfin:'17:00'} ,
+    {hdebut:'17:00' , hfin:'18:00'} ,
+    {hdebut:'18:00' , hfin:'19:00'} ,
+    {hdebut:'19:00' , hfin:'20:00'} ,
   ]
   calendarEvents: any  = [];
   events:any = [
-    {title : 'Present' , start :'2023-03-01' , color:'#0000FF' },
-    {title : 'Present' , start :'2023-03-03' , color:'#FF0000' },
-    {title : 'Absent' , start :'2023-03-10' , color:'#FF0000' },
-    {title : 'En attente' , start :'2023-05-04' , color:'#EFBA77' },
+
   ];
   calendarOptions: CalendarOptions = {
     plugins: [dayGridPlugin, interactionPlugin ],
@@ -60,8 +58,8 @@ export class ReservationComponent implements OnInit {
     events: this.events ,
     eventClick : this.handleDateClick.bind(this),// your event array
     selectable: true,
-    select: this.handleDateSelect.bind(this)
-
+    select: this.handleDateSelect.bind(this) ,
+    initialDate: new Date() ,
   };
 
   toggleWeekends() {
@@ -91,18 +89,35 @@ export class ReservationComponent implements OnInit {
       }
     );
 
-   
-    
 
-     
+
+
+
     }
   ngOnInit(): void {
 
+
     this.titleService.setTitle('GST-Réserver un terrain');
-    console.log(this.horaires) ; 
-    this.id_terrain = this.activatedRoute.snapshot.paramMap.get("id"); 
-    console.log("id terrain est : " , this.id_terrain) ; 
-   
+    console.log(this.horaires) ;
+
+    this.id_terrain = this.activatedRoute.snapshot.paramMap.get("id");
+    console.log("id terrain est : " , this.id_terrain) ;
+
+    this.dateActuelle = this.calendarOptions.initialDate;
+    this.oneEvent.start  = format(this.dateActuelle, 'yyyy-MM-dd'); // Formater la date initiale
+    console.log('La date actuelle :', this.oneEvent.start );
+
+    this.reservationService.getReservationsByDate( this.oneEvent.start  ,this.id_terrain ).subscribe(
+      data => {
+        this.horairesNonDispo = data;
+        console.log('Horaires récupérés avec succès:', this.horairesNonDispo);
+      },
+      error => {
+        console.log('Une erreur est survenue lors de la récupération des horaires:', error);
+      }
+    );
+
+
   }
   onCheckboxSelectionne(event: any, horaire: any) {
     const isChecked = event.target.checked;
@@ -117,7 +132,7 @@ export class ReservationComponent implements OnInit {
     console.log(this.selectedHoraires);
   }
 
-  
+
 
 
 
@@ -127,16 +142,26 @@ export class ReservationComponent implements OnInit {
     return !horaireNonDispo;
  }
  passer() {
-  this.Myobj.id_terrain = this.id_terrain ; 
-  this.Myobj.selectedHoraires = this.selectedHoraires ; 
-  this.Myobj.dateClicked = this.oneEvent.start ; 
+  if ((this.oneEvent.start=="") || (this.selectedHoraires.length == 0) ){
+     this.alerte = true ;
+     setTimeout(() => {
+      this.alerte = false ;
+    }, 3000);
+  }
+  else {
+    this.alerte = false ;
+  this.Myobj.id_terrain = this.id_terrain ;
+  this.Myobj.selectedHoraires = this.selectedHoraires ;
+  this.Myobj.dateClicked = this.oneEvent.start ;
   let objStr = JSON.stringify(this.Myobj);
   sessionStorage.setItem('reservation', objStr);
   this.router.navigate(['/Validation']);
  }
+  }
+
  retour() {
-  this.router.navigate(['selection']) ; 
+  this.router.navigate(['selection']) ;
  }
- 
+
 }
 
