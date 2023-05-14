@@ -37,6 +37,7 @@ import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
 import interactionPlugin from '@fullcalendar/interaction';
 import { ValiderReservationComponent } from './components/valider-reservation/valider-reservation.component';
 import { SelectionTerrainReservationComponent } from './components/selection-terrain-reservation/selection-terrain-reservation.component';
+import { ListeReservationsComponent } from './components/liste-reservations/liste-reservations.component';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import { SelectionTerrainReservationComponent } from './components/selection-ter
 
     ValiderReservationComponent,
     SelectionTerrainReservationComponent,
+    ListeReservationsComponent,
 
    
 

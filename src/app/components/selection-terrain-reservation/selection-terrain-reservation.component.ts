@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+import { ReservationService } from 'src/app/services/reservation.service';
+
 @Component({
   selector: 'app-selection-terrain-reservation',
   templateUrl: './selection-terrain-reservation.component.html',
@@ -8,11 +10,18 @@ import { Router } from '@angular/router';
 })
 export class SelectionTerrainReservationComponent implements OnInit {
 
-  constructor(private router : Router ) { }
+
+  constructor(private reservationService : ReservationService ,private router: Router) { }
 
   ngOnInit(): void {
   }
-  goToNextPage(id : any ) {
-    this.router.navigate([`/reservation/${id}`]); 
+  passer() {
+    this.router.navigate(['/ListeRéservations']);
    }
+
+
+  goToNextPage(id : any ) {
+    this.router.navigate([`/reservation/${id}`]);
+   }
+
 }
