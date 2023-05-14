@@ -51,7 +51,7 @@ export class ValiderReservationComponent implements OnInit {
           setTimeout(() => {
             this.confirm = false  ; 
             this.router.navigate(["/selection"]); 
-          }, 3000);
+          }, 6000);
         },(err) => {
           console.log("here error from BE", err);
         }
