@@ -10,14 +10,21 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class SingleEventComponent implements OnInit {
   id : any ; 
- public  event : any ; 
+ public  event : any ;
+ 
+ 
   constructor(private titleService: Title , private activatedRoute : ActivatedRoute , public eventService : EventService) { }
 
   ngOnInit(): void {
     this.titleService.setTitle('GST-Evénement');
     this.id = this.activatedRoute.snapshot.paramMap.get("id"); 
-    this.eventService.getData(this.id).subscribe((data)=> {this.event = data }) ; 
+    this.eventService.getData(this.id).subscribe((data)=> {this.event = data;console.log(data); }) 
+    ; 
+   
+    
   } 
+  
+  
   /*this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data;});*/ 
 
 }

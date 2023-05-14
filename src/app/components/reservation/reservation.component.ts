@@ -6,12 +6,18 @@ import { format } from 'date-fns';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+
+
+
+
+
 @Component({
   selector: 'app-reservation',
   templateUrl: './reservation.component.html',
   styleUrls: ['./reservation.component.css']
 })
 export class ReservationComponent implements OnInit {
+ 
 
   constructor(private titleService: Title,private reservationService : ReservationService ,private router: Router , private activatedRoute : ActivatedRoute ) { }
   //selectedHoraire : any ;
@@ -49,6 +55,7 @@ export class ReservationComponent implements OnInit {
   ]
   calendarEvents: any  = [];
   events:any = [
+
 
   ];
   calendarOptions: CalendarOptions = {
@@ -133,6 +140,8 @@ export class ReservationComponent implements OnInit {
   }
 
 
+ 
+
 
 
 
@@ -164,4 +173,3 @@ export class ReservationComponent implements OnInit {
  }
 
 }
-

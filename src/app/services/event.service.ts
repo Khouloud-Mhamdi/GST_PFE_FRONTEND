@@ -20,5 +20,9 @@ export class EventService {
   getData(id: number): Observable<Object> {
     return this.http.get(`${this.eventsURL}/${id}`);
   }
+  updatEvent(event : any){
+    return this.http.put(this.host+ "/api/modifier" , event ); 
+  }
+ 
  
 }

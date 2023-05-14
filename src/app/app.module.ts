@@ -88,6 +88,8 @@ import { ListeReservationsComponent } from './components/liste-reservations/list
     HttpClientModule,
     FullCalendarModule
 
+
+
   ],
   providers: [],
   bootstrap: [AppComponent]

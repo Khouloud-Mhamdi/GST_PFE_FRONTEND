@@ -77,7 +77,7 @@ export class InscriptionDisciplineComponent implements OnInit {
         telephone : ["",[Validators.required]],
         matricule : ["" ,[Validators.required]],
         profession : [""],
-        stegiste : ["", [Validators.required]],
+        type : ["", [Validators.required]],
         mode_paiement :["",[Validators.required]],
         discipline : ["",[Validators.required]],
 
@@ -109,12 +109,12 @@ export class InscriptionDisciplineComponent implements OnInit {
   onRelationChange(event: any) {
     this.selectedRelation = event.target.value;
     this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data;  } );
-    if(this.user.stegiste!==null)
+    if(this.user.type!==null)
        {
         this.alerteStegiste=false;
         this.ValeurMatricule=this.user.matricule;
         this.ValeurProfession=this.user.profession;
-        this.stegiste=this.user.stegiste;
+        this.stegiste=this.user.type;
 
         this.alerteRelation=false;
        }
@@ -219,7 +219,7 @@ export class InscriptionDisciplineComponent implements OnInit {
     }
   }
   controleSaisieStegiste() : boolean{
-    if (this.addFamilleForm.value.stegiste.trim().length === 0 ) {
+    if (this.addFamilleForm.value.type.trim().length === 0 ) {
      return false;
 
     } else {
@@ -346,7 +346,7 @@ export class InscriptionDisciplineComponent implements OnInit {
     telephone: this.addFamilleForm.value.telephone,
     matricule: this.addFamilleForm.value.matricule,
     profession: this.addFamilleForm.value.profession,
-    stegiste: this.addFamilleForm.value.stegiste
+    type: this.addFamilleForm.value.type
   };
     this.authService.updateUser(this.userUpdate).subscribe(
       (data) => { this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data;  } );
@@ -424,7 +424,7 @@ export class InscriptionDisciplineComponent implements OnInit {
 
     );
 
-     if (this.user.stegiste===null )
+     if (this.user.type===null )
     {this.userUpdateFamilly = {
       id: this.user.id,
       nom:  this.user.nom,
@@ -433,11 +433,11 @@ export class InscriptionDisciplineComponent implements OnInit {
 
       matricule: this.addFamilleForm.value.matricule,
       profession: this.addFamilleForm.value.profession,
-      stegiste: this.addFamilleForm.value.stegiste
+      type: this.addFamilleForm.value.type
     };
     this.authService.updateUser(this.userUpdateFamilly).subscribe(
       (data) => { this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data;  } );
-
+      console.log("update done");
       },(err) => {
       console.log("update grave");
         this.valid=true;
