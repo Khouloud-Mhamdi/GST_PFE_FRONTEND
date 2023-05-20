@@ -62,3 +62,9 @@
     transform: scale(2);
   }
   
+  .alerte-texte {
+    color: navy;
+    text-align: center;
+    font-weight: bold;
+  }
+  

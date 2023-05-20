@@ -21,6 +21,7 @@ export class ReservationComponent implements OnInit {
 
   constructor(private titleService: Title,private reservationService : ReservationService ,private router: Router , private activatedRoute : ActivatedRoute ) { }
   //selectedHoraire : any ;
+  dateAlerte = true  ; 
   alerte = false ;
   dateActuelle : any ;
   selectedHoraires: any[] = [];
@@ -80,21 +81,30 @@ export class ReservationComponent implements OnInit {
    console.log(dateStr);
   }
   handleDateSelect(selectInfo:any ) {
+    this.dateAlerte = true ; 
     console.log(selectInfo.startStr);
     this.oneEvent.title = 'Attente' ;
     this.oneEvent.color = '#EFBA77';
     this.oneEvent.start = selectInfo.startStr;
     this.events.push(this.oneEvent);
+    const date1 = new Date(this.oneEvent.start);
+    const date2 = new Date(this.dateActuelle);
+    if (date1 < date2) {
+     this.dateAlerte = false ; 
+    } else {
+      this.reservationService.getReservationsByDate(this.oneEvent.start ,this.id_terrain ).subscribe(
+        data => {
+          this.horairesNonDispo = data;
+          console.log('Horaires récupérés avec succès:', this.horairesNonDispo);
+        },
+        error => {
+          console.log('Une erreur est survenue lors de la récupération des horaires:', error);
+        }
+      );
+
+    }
     console.log(this.events) ;
-    this.reservationService.getReservationsByDate(this.oneEvent.start ,this.id_terrain ).subscribe(
-      data => {
-        this.horairesNonDispo = data;
-        console.log('Horaires récupérés avec succès:', this.horairesNonDispo);
-      },
-      error => {
-        console.log('Une erreur est survenue lors de la récupération des horaires:', error);
-      }
-    );
+    
 
 
 
@@ -111,8 +121,10 @@ export class ReservationComponent implements OnInit {
     console.log("id terrain est : " , this.id_terrain) ;
 
     this.dateActuelle = this.calendarOptions.initialDate;
-    this.oneEvent.start  = format(this.dateActuelle, 'yyyy-MM-dd'); // Formater la date initiale
+    this.oneEvent.start  = format(this.dateActuelle, 'yyyy-MM-dd');
+    this.dateActuelle = format(this.dateActuelle, 'yyyy-MM-dd'); // Formater la date initiale
     console.log('La date actuelle :', this.oneEvent.start );
+    console.log('La date actuelle 11 :',  this.dateActuelle  );
 
     this.reservationService.getReservationsByDate( this.oneEvent.start  ,this.id_terrain ).subscribe(
       data => {

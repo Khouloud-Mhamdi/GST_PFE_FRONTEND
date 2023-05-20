@@ -18,7 +18,6 @@
     "@angular/platform-browser": "^14.2.0",
     "@angular/platform-browser-dynamic": "^14.2.0",
     "@angular/router": "^14.2.0",
-<<<<<<< HEAD
     "@fullcalendar/angular": "^6.1.6",
     "@fullcalendar/core": "^6.1.6",
     "@fullcalendar/daygrid": "^6.1.6",
@@ -28,9 +27,7 @@
     "angularx-flatpickr": "^7.3.0",
     "date-fns": "^2.30.0",
     "fullcalendar": "^6.1.6",
-=======
    
->>>>>>> aed8e493322deea5071ab7dcd8db63ce06c261e8
     "rxjs": "~7.5.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
