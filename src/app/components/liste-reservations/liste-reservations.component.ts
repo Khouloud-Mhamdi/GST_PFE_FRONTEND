@@ -14,7 +14,7 @@ export class ListeReservationsComponent implements OnInit {
   reservations:any;
   idUser :any;
   showConfirmationDialog = false ;
-  itemsPerPage: number = 2;
+  itemsPerPage: number = 6;
   totalPages: number = 1;
   currentPage: number = 1;
   pages: number[] = [];
