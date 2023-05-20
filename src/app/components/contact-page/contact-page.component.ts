@@ -10,7 +10,7 @@ export class ContactPageComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Contact');
+    this.titleService.setTitle('GST-Contact');
   }
 
 }

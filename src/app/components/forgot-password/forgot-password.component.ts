@@ -27,7 +27,7 @@ export class ForgotPasswordComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.titleService.setTitle('Mot de passe oublié');
+    this.titleService.setTitle('GST-Mot de passe oublié');
     this.ForgetPasswordForm = this.formBuilder.group({
       email : ["", [Validators.email,Validators.required]]
 

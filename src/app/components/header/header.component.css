@@ -1,0 +1,92 @@
+.header-container {
+  position: relative;
+  padding-top: 50px;
+  display: flex;
+  align-items: center;
+}
+
+.header1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background-color: rgba(128, 130, 138, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  opacity: 1; /* Assurez-vous que l'opacité est réglée sur 1 */
+}
+
+.header2 {
+  position: fixed;
+  background-color: #ffffff;
+  opacity: 1;
+  margin-top: 60px;
+  height: 90px;
+}
+
+.logo-image {
+  width: 90px;
+  height: auto;
+  margin-top:10px;
+}
+.button-container {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.custom-btn {
+  display: inline-block;
+  padding: 10px 20px;
+  margin-right: 10px;
+  background-color: #0ea2bd;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  border: none;
+}
+.custom-link {
+  color: #6c757d;
+
+  font-size:18px;
+
+
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-link:hover {
+  background-color: #6c757d;
+  color: #ffffff;
+
+}
+
+.custom-link:active {
+  background-color: #6c757d;
+
+  color: #ffffff;
+}
+.dropdown-menu {
+  display: none; /* Cacher le menu déroulant par défaut */
+  position: absolute; /* Position absolue pour le positionner correctement */
+
+
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block; /* Afficher le menu déroulant au survol du bouton */
+}
+
+.dropdown-menu a {
+  display: block; /* Afficher les éléments du menu déroulant en tant que blocs */
+  padding: 8px;
+  color:black;/* Ajouter un peu d'espace intérieur pour les éléments du menu */
+}
+
+.dropdown-menu a:hover {
+  background-color: #e9ecef; /* Couleur de fond au survol des éléments du menu déroulant */
+}

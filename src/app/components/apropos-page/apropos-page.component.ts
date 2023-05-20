@@ -11,7 +11,7 @@ export class AproposPageComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('A propos');
+    this.titleService.setTitle('GST-A propos');
   }
 
 }

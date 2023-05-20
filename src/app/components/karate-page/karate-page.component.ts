@@ -11,7 +11,7 @@ export class KaratePageComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Disciplines - Karaté');
+    this.titleService.setTitle('GST-Disciplines | Karaté');
   }
 
 }

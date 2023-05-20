@@ -1,0 +1,68 @@
+
+<section id="hero-animated" class="hero-animated d-flex align-items-center">
+  <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
+    <h2>Réserver <span>un terrain </span></h2>
+  </div>
+</section>
+<div class="col-md-5 mt-3">
+  <h1 class="text-muted mb-6 text-center">Etape 3 : dernière étape</h1>
+  <hr>
+
+</div>
+<!--alert de succée -->
+<div class="alert alert-success" role="alert"  *ngIf="confirm" >
+  <strong class="d-block d-sm-inline-block-force"> Votre demande est maintenant en attente , vous recevrez un mail de confirmation le plus tôt possible  </strong>
+</div>
+<!-- Alerte de confirmation -->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="alert alert-success confirmation-dialog" role="alert" *ngIf="showConfirmationDialog">
+        <h4 class="alert-heading">Validation </h4>
+        <p>Voulez-vous confirmer votre reservation ?</p>
+        <hr>
+        <div class="button-container">
+          <button class="btn btn-success confirm-button" (click)="addReservation()">Enregistrer</button>
+          <button class="btn btn-secondary cancel-button" (click)="closeConfirmationDialog()">Annuler</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 mt-5">
+      <div class="card shadow-lg">
+        <div class="card-header bg-primary text-white">
+          <h4 class="card-title mb-0">Confirmation de réservation</h4>
+        </div>
+        <div class="card-body">
+          <p class="card-text">Terrain de tennis numéro<strong> {{obj.id_terrain}}</strong></p>
+          <p class="card-text">Le <strong>{{obj.dateClicked}}</strong> </p>
+          <div *ngFor="let horaire of obj.selectedHoraires" >
+          <p class="card-text">De <strong>{{horaire.hdebut}}</strong>  à <strong>{{horaire.hfin}}</strong></p>
+          </div>
+          <div class="text-center">
+            <button class="btn btn-primary" (click)="openConfirmationDialog()">Confirmer la réservation</button>
+            <button type="button" class="btn btn-secondary ml-2" style="margin-left:10px ;" (click)="annuler()">Annuler</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div style="display: flex; justify-content: flex-start; width: 100%; margin-top: 20px; margin-bottom: 20px;">
+    <button  (click)="retourReservation()" style="background-color: rgb(23, 161, 177); color: white; padding: 10px 20px; border-radius: 5px; border: none; font-size: 18px;">
+      &larr; Retour à l'étape précédente
+    </button>
+  </div>
+
+
+
+</div>
+
+
+
+
+
+

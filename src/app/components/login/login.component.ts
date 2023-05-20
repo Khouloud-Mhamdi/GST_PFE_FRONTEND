@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
       this.isLoggedIn = true;
       this.role = this.tokenStorage.getUser().role;
     }
-    this.titleService.setTitle('Se connecter');
+    this.titleService.setTitle('GST-Se connecter');
     this.loginForm = this.formBuilder.group({
       email : ["", [Validators.email]],
       password : ["", [Validators.required ]],

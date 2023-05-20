@@ -7,18 +7,18 @@ import { EventService } from 'src/app/services/event.service';
   styleUrls: ['./event-page.component.css']
 })
 export class EventPageComponent implements OnInit {
-   eventsTab :any = [];  
+   eventsTab :any = [];
   constructor(private titleService: Title , public eventService : EventService  ) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('evènements');
-    this.getData() ; 
+    this.titleService.setTitle('GST-Evénements');
+    this.getData() ;
   }
   getData() {
     this.eventService.getAll().subscribe(
       response =>{this.eventService.listData = response;}
      );
-   
+
   }
-  
+
 }

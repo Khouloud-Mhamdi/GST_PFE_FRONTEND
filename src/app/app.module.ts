@@ -28,10 +28,17 @@ import { HttpClientModule } from "@angular/common/http";
 import { ProfileComponent } from './components/profile/profile.component';
 import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
-import { ReservationComponent } from './components/reservation/reservation.component';
+
 import { InscriptionDisciplineComponent } from './components/inscription-discipline/inscription-discipline.component';
 import { OneEventComponent } from './components/one-event/one-event.component';
+import { FullCalendarModule } from '@fullcalendar/angular'; // must go before plugins
 
+import dayGridPlugin from '@fullcalendar/daygrid'; // a plugin!
+import interactionPlugin from '@fullcalendar/interaction';
+import { SelectionTerrainReservationComponent } from './components/selection-terrain-reservation/selection-terrain-reservation.component';
+import { ListeReservationsComponent } from './components/liste-reservations/liste-reservations.component';
+import { ReservationComponent } from './components/reservation/reservation.component'
+import {ValiderReservationComponent } from './components/valider-reservation/valider-reservation.component';
 
 
 @NgModule({
@@ -61,11 +68,13 @@ import { OneEventComponent } from './components/one-event/one-event.component';
     ProfileComponent,
     ForgotPasswordComponent,
     ResetPasswordComponent,
-    ReservationComponent,
-    InscriptionDisciplineComponent,
+   InscriptionDisciplineComponent,
     OneEventComponent,
-
-
+    ValiderReservationComponent,
+    SelectionTerrainReservationComponent,
+    ListeReservationsComponent,
+    ReservationComponent
+ 
 ],
   imports: [
     BrowserModule,
@@ -73,8 +82,7 @@ import { OneEventComponent } from './components/one-event/one-event.component';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-
-
+    FullCalendarModule
 
   ],
   providers: [],

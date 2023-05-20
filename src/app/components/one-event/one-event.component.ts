@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { EventService } from 'src/app/services/event.service';
 
@@ -9,8 +10,9 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class OneEventComponent implements OnInit {
   @Input() eventInput : any ; 
+
   public  event : any ;
-  constructor(public eventService : EventService , private router:Router  ) { }
+ 
   dataEvent = {
     id : 0 , 
     titre : '' , 
@@ -19,7 +21,12 @@ export class OneEventComponent implements OnInit {
     date : '' ,
     nb_consultation: 0
   }
+
+  constructor(private titleService: Title,public eventService : EventService , private router:Router  ) { }
+
+
   ngOnInit(): void {
+   
   }
   goToDisplay(id: any) {
     this.router.navigate([`eventInfo/${id}`]); 

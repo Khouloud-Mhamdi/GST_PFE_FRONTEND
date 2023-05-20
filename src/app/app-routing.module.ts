@@ -17,7 +17,10 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
 import { SignupPageComponent } from './components/signup-page/signup-page.component';
 import { SingleEventComponent } from './components/single-event/single-event.component';
 import { TennisPageComponent } from './components/tennis-page/tennis-page.component';
+import { ValiderReservationComponent } from './components/valider-reservation/valider-reservation.component';
 import { VolleyballPageComponent } from './components/volleyball-page/volleyball-page.component';
+import { SelectionTerrainReservationComponent } from './components/selection-terrain-reservation/selection-terrain-reservation.component';
+import { ListeReservationsComponent } from './components/liste-reservations/liste-reservations.component';
 
 const routes: Routes = [
 
@@ -25,7 +28,7 @@ const routes: Routes = [
   {path : "Contact" , component:ContactPageComponent},
   {path : "Basketball" , component:BasketPageComponent},
   {path : "Tennis" , component:TennisPageComponent},
-  {path : "Volleyball" , component:VolleyballPageComponent},
+  {path : "Haltérophilie" , component:VolleyballPageComponent},
   {path : "Karaté" , component:KaratePageComponent},
   {path : "InscriptionDiscipline" , component:InscriptionDisciplineComponent},
   {path : "Login" , component:LoginComponent},
@@ -37,8 +40,14 @@ const routes: Routes = [
   {path : "profil" , component:ProfileComponent},
   {path : "MotDePasseOublie" , component:ForgotPasswordComponent},
   {path : "resetPassword" , component:ResetPasswordComponent},
-  {path : "reservation" , component:ReservationComponent},
-  
+  {path : "reservation/:id" , component:ReservationComponent},
+
+  {path : "Validation" , component:ValiderReservationComponent},
+  {path : "ListeRéservations" , component:ListeReservationsComponent},
+
+  {path : "selection" , component:SelectionTerrainReservationComponent},
+
+
 ];
 
 @NgModule({

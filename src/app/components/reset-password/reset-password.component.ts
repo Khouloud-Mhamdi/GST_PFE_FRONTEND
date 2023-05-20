@@ -27,7 +27,7 @@ export class ResetPasswordComponent implements OnInit {
   constructor(private titleService: Title ,private router: Router, private formBuilder : FormBuilder ,  private authService: AuthService,private route: ActivatedRoute) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Récupérer mot de passe');
+    this.titleService.setTitle('GST-Récupérer mot de passe');
     this.ResetPasswordForm = this.formBuilder.group({
 
       password : ["", [Validators.required , Validators.minLength(5) , Validators.maxLength(20)]],

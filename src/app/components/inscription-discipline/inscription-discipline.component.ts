@@ -1,6 +1,7 @@
 
 import { Component, OnInit } from '@angular/core';
 import {  FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -58,9 +59,10 @@ export class InscriptionDisciplineComponent implements OnInit {
   stegiste="";
   showMatricule = false ;
   ControleInputStegiste=false;
-  constructor( private disciplineService : DisciplineService , private token: TokenStorageService ,private authService : AuthService , private router : Router , private formBuilder :FormBuilder  ) { }
+  constructor( private titleService: Title ,private disciplineService : DisciplineService , private token: TokenStorageService ,private authService : AuthService , private router : Router , private formBuilder :FormBuilder  ) { }
 
-  ngOnInit(): void {
+  ngOnInit(): void { this.titleService.setTitle('GST-Inscription dans une discipline');
+
     this.currentUser = this.token.getUser();
     this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data;  } );
        this.getAllclubs();

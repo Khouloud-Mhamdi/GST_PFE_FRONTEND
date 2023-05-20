@@ -23,7 +23,7 @@ export class SignupPageComponent implements OnInit {
   constructor(private titleService: Title , private formBuilder : FormBuilder , private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Créer compte');
+    this.titleService.setTitle('GST-Créer compte');
     this.signupForm = this.formBuilder.group({
       firstName: ["", [Validators.required, Validators.minLength(3)]],
       lastName : ["", [Validators.required , Validators.minLength(3)]],

@@ -12,7 +12,7 @@ export class BasketPageComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
-    this.titleService.setTitle('Disciplines - Basketball');
+    this.titleService.setTitle('GST-Disciplines | Basketball');
   }
 
 }

@@ -1,0 +1,64 @@
+.cases-parent {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .case {
+    background-color: #d1d4da;
+    border-radius: 5px;
+    width: calc(31.33% - 10px);
+    height: 95px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    position: relative;
+    padding: 10px;
+    border: 2px solid #010906;
+    color: #127750;
+  }
+  
+  
+  .case input[type="radio"] {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 20px;
+    height: 30px;
+  }
+  
+  .case-content {
+    text-align: center;
+  }
+  
+  .case-content .time {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .case-content .title {
+    font-size: 1rem;
+    margin-top: 0;
+  }
+  
+  .hors-service {
+    color: rgb(216, 59, 59);
+    border: 2px solid rgb(216, 59, 59);
+  }
+  .class.test{
+    color: rgb(11, 107, 75);
+  }
+
+  .case label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .case label input[type="checkbox"] {
+    margin-right: 50px;
+    transform: scale(2);
+  }
+  
