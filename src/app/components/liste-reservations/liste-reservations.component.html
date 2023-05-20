@@ -25,7 +25,7 @@
   <div class="row justify-content-center">
     <div class="col-md-12 mt-5">
       <div class="d-flex flex-wrap">
-        <div class="card shadow-lg col-md-4" *ngFor="let r of reservations" style="margin-bottom:10px;">
+        <div class="card shadow-lg col-md-4" *ngFor="let r of displayedReservations" style="margin-bottom:10px;">
           <div class="card-body">
             <div class="card-header bg-primary text-white">
               <h4 class="card-title mb-0">Réservation</h4>
@@ -40,6 +40,16 @@
           </div>
         </div>
       </div>
+      <div class="pagination">
+        <button class="prev" [disabled]="currentPage == 1" (click)="prevPage()">Précédent</button>
+
+        <ng-container *ngFor="let page of pages">
+          <button class="page" [class.active]="currentPage === page" (click)="goToPage(page)">{{ page }}</button>
+        </ng-container>
+
+        <button class="next" [disabled]="currentPage == totalPages" (click)="nextPage()">Suivant</button>
+      </div>
+
     </div>
   </div>
 </div>

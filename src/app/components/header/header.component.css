@@ -49,10 +49,10 @@
 }
 .custom-link {
   color: #6c757d;
- 
+
   font-size:18px;
-  
- 
+
+
   height: 40px;
   display: flex;
   justify-content: center;
@@ -67,6 +67,26 @@
 
 .custom-link:active {
   background-color: #6c757d;
-  
+
   color: #ffffff;
+}
+.dropdown-menu {
+  display: none; /* Cacher le menu déroulant par défaut */
+  position: absolute; /* Position absolue pour le positionner correctement */
+
+
+}
+
+.dropdown:hover .dropdown-menu {
+  display: block; /* Afficher le menu déroulant au survol du bouton */
+}
+
+.dropdown-menu a {
+  display: block; /* Afficher les éléments du menu déroulant en tant que blocs */
+  padding: 8px;
+  color:black;/* Ajouter un peu d'espace intérieur pour les éléments du menu */
+}
+
+.dropdown-menu a:hover {
+  background-color: #e9ecef; /* Couleur de fond au survol des éléments du menu déroulant */
 }

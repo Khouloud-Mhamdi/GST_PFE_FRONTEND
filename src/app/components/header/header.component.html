@@ -1,7 +1,7 @@
 <div class="header-container">
   <header id="header-top" class="header-top header1 fixed-top" data-scrollto-offset="0">
     <div class="container-fluid d-flex align-items-center justify-content-end button-container">
-      
+
       <button class="custom-btn" style="margin-right: 10px;" (click)="Inscription()">Devenir membre </button>
       <button class="custom-btn" style="margin-right: 50px; margin-top: 5px;" (click)="reserver()">Réserver un terrain</button>
     </div>
@@ -22,40 +22,48 @@
             <li>
               <a routerLink="Tennis">Tennis</a>
               <a routerLink="Basketball">Basketball</a>
-              <a routerLink="Volleyball">Volleyball</a>
+              <a routerLink="Haltérophilie">Haltérophilie</a>
             </li>
             <li>
               <a routerLink="Handball">Handball</a>
               <a routerLink="Karaté">Karaté</a>
-              <a routerLink="Pétanque">Pétanque</a>
+
             </li>
-            <li>
-              <a href="PingPong">PingPong</a>
-              <a href="Aikido">Aïkido</a>
-              <a href="#">Natation</a>
-            </li>
+
           </ul>
         </li>
         <li><a class="nav-link scrollto" routerLink="events"><strong>Evénements</strong></a></li>
         <li><a class="nav-link scrollto" routerLink="Contact"><strong>Contact</strong></a></li>
-        
+
+
+
       </ul>
       <i class="bi bi-list mobile-nav-toggle d-none"></i>
     </nav><!-- .navbar -->
-    <div>
+    <div >
+      <div style="margin-left: 20%;width:200px" class="dropdown" *ngIf="authService.roleMatch('ADHERENT')">
+        <button class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <i  class="fa fa-user fa-2x ml-2"></i> <!-- J'ai ajusté la classe ml-10 en ml-2 pour déplacer l'icône vers la gauche -->
+        </button>
+        <div class="dropdown-menu dropdown-menu-leftdropdown-menu-left" aria-labelledby="dropdownMenuButton">
+          <a class="dropdown-item" routerLink="profil" *ngIf="authService.roleMatch('ADHERENT')">
+            <i class="fas fa-user"></i> Profil
+          </a>
+          <a class="dropdown-item" (click)="LogOut()" *ngIf="isLoggedIn()">
+            <i class="fas fa-sign-out-alt"></i> Se déconnecter
+          </a>
+        </div>
+      </div>
       <a routerLink="signup" *ngIf="!isLoggedIn()" class="custom-link nav-link  d-inline-block" style=" margin-right: 20px; margin-left: 50px; ">
         <span>Créer compte</span>
       </a>
       <a routerLink="Login" *ngIf="!isLoggedIn()" class="custom-link nav-link  d-inline-block" style="margin-right: 50px;" >
         <span>Se connecter</span>
       </a>
-      <a routerLink="profil" *ngIf="authService.roleMatch('ADHERENT')" class="custom-link nav-link  d-inline-block" style="margin-right: 30px;" >
-        <span>Profil</span>
-      </a>
-      <a (click)="LogOut()" *ngIf="isLoggedIn()" class="custom-link nav-link  d-inline-block" >
-        <span>Se déconnecter</span>
-      </a>
-     
+
+
+
+
 
 </div>
 </div>

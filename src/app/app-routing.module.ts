@@ -28,7 +28,7 @@ const routes: Routes = [
   {path : "Contact" , component:ContactPageComponent},
   {path : "Basketball" , component:BasketPageComponent},
   {path : "Tennis" , component:TennisPageComponent},
-  {path : "Volleyball" , component:VolleyballPageComponent},
+  {path : "Haltérophilie" , component:VolleyballPageComponent},
   {path : "Karaté" , component:KaratePageComponent},
   {path : "InscriptionDiscipline" , component:InscriptionDisciplineComponent},
   {path : "Login" , component:LoginComponent},
