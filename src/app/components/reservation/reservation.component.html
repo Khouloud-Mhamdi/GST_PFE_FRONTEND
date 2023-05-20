@@ -23,7 +23,11 @@
     <br>
     <p>{{oneEvent.start }}</p>
     <hr>
-    <div class="cases-parent">
+    <br>
+    <br>
+    <p *ngIf="!dateAlerte" class="alerte-texte">Désolé, la réservation de terrains en ligne n'est possible que pour les dates à venir. Veuillez sélectionner une date future dans le calendrier.</p>
+    <div class="cases-parent" *ngIf="dateAlerte" >
+
 
       <div *ngFor="let horaire of horaires" class="case" [class.hors-service]="!isHoraireDisponible(horaire)">
         <label>
@@ -38,7 +42,8 @@
           </div>
         </label>
       </div>
-      
+
+
       <div style="display: flex; justify-content: space-between; width: 100%; margin-top: 20px;">
         <div>
           <button style="float: left; background-color: rgb(23, 161, 177); color: white; padding: 10px 20px; border-radius: 5px; border: none;" (click)="retour()"> &larr; Retour à l'étape précédente</button>
@@ -53,4 +58,3 @@
     </div>
   </div>
 </div>
-

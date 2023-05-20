@@ -70,11 +70,13 @@ import {ValiderReservationComponent } from './components/valider-reservation/val
     ResetPasswordComponent,
    InscriptionDisciplineComponent,
     OneEventComponent,
+
     ValiderReservationComponent,
     SelectionTerrainReservationComponent,
     ListeReservationsComponent,
     ReservationComponent
- 
+
+
 ],
   imports: [
     BrowserModule,

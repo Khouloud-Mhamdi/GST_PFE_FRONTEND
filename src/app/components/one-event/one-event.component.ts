@@ -9,15 +9,15 @@ import { EventService } from 'src/app/services/event.service';
   styleUrls: ['./one-event.component.css']
 })
 export class OneEventComponent implements OnInit {
-  @Input() eventInput : any ; 
+  @Input() eventInput : any ;
+  
 
   public  event : any ;
- 
   dataEvent = {
-    id : 0 , 
-    titre : '' , 
-    description : '' , 
-    lieu : '' , 
+    id : 0 ,
+    titre : '' ,
+    description : '' ,
+    lieu : '' ,
     date : '' ,
     nb_consultation: 0
   }
@@ -26,21 +26,21 @@ export class OneEventComponent implements OnInit {
 
 
   ngOnInit(): void {
-   
+
   }
   goToDisplay(id: any) {
-    this.router.navigate([`eventInfo/${id}`]); 
+    this.router.navigate([`eventInfo/${id}`]);
     this.eventService.getData(id).subscribe((data) => {
       this.event = data;
       console.log(data);
-      
+
       this.dataEvent.id = id;
       this.dataEvent.titre = this.event.titre;
       this.dataEvent.lieu = this.event.lieu;
       this.dataEvent.description = this.event.description;
       this.dataEvent.date = this.event.date;
       this.dataEvent.nb_consultation = this.event.nb_consultation + 1;
-  
+
       this.eventService.updatEvent(this.dataEvent).subscribe((data) => {
         console.log("Mise à jour réussie !");
         console.log(data);
@@ -51,5 +51,5 @@ export class OneEventComponent implements OnInit {
       });
     });
   }
-  
+
 }
