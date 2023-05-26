@@ -32,15 +32,15 @@
     font-size: 20px;
     margin-top: 0;
   }
-  
+
   .confirmation-dialog p {
     margin-bottom: 10px;
   }
-  
+
   .button-container {
     text-align: center;
   }
-  
+
   .cancel-button {
     background-color: #ccc;
     color: #000;
@@ -49,11 +49,88 @@
     margin-right: 10px;
     cursor: pointer;
   }
-  
+
   .confirm-button {
-  
+
     color: #fff;
     border: none;
     padding: 10px 20px;
     cursor: pointer;
-  }  
+  }
+
+  .modal-content {
+    width: 600px; /* ou toute autre taille que vous souhaitez */
+    margin: auto;
+  }
+  .red{
+    color: red;
+  }
+
+  label
+  {font-size:18px;
+    color: #002a52;}
+    #datatable1 {
+      width: 100%;
+
+    }
+    .modal-dialog {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 500px;
+      z-index: 9999;
+    }
+    
+    .modal-content {
+      border-radius: 0;
+      background-color: white;
+    }
+    
+    .modal-header {
+      border-bottom: none;
+      padding: 1.5rem;
+    }
+    
+    .modal-title {
+      color: #000;
+      margin-bottom: 0.5rem;
+    }
+    
+    .modal-body {
+      text-align: center;
+      padding: 1.5rem;
+    }
+    
+    .modal-footer {
+      border-top: none;
+      padding: 1.5rem;
+    }
+    
+    .cancel-button {
+      background-color: #6c757d;
+      color: white;
+    }
+    
+    .confirm-button {
+      background-color: #007bff;
+      color: white;
+    }
+    
+    .confirm-button:hover,
+    .confirm-button:focus {
+      background-color: #0069d9;
+    }
+    
+    .modal-body label {
+      display: block;
+      text-align: left;
+      margin-bottom: 0.5rem;
+    }
+    
+    .modal-body input {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+    

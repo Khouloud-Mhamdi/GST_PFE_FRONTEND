@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { TokenStorageService } from 'src/app/services/token-storage.service';
+import { mustMatch } from 'src/app/validators/mustMatch';
+
 
 @Component({
   selector: 'app-profile',
@@ -11,19 +14,38 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class ProfileComponent implements OnInit {
   currentUser: any;
+  PasswordForm !:  FormGroup <any>;
   user : any = {};
   showConfirmationDialog = false ;
+  showModalPassword = false ;
   update = false ;
   erreur = false ;
   valid=false;
+  faute = false ;
   afficheDiscipline = false ;
+  changerPassword=false;
+  updatedPassword=false;
   disciplines : any ;
-  constructor(private titleService: Title,private token: TokenStorageService , private authService : AuthService , private router : Router) { }
+  long:any;
+  Password ={
+    email: String,
+    password: String
+  }
+  constructor(private titleService: Title,private token: TokenStorageService , private authService : AuthService , private router : Router,private formBuilder :FormBuilder) { }
 
   ngOnInit(): void {
     this.titleService.setTitle('GST-Profil');
     this.currentUser = this.token.getUser();
-    console.log(this.currentUser.id);
+    this.PasswordForm= this.formBuilder.group({
+
+      OldPassword : ["", [Validators.required]],
+      NewPassword :["", [Validators.required ,Validators.minLength(5)]],
+      ConfirmPassword : ["", [Validators.required]]
+     },
+     {
+      validator: mustMatch("NewPassword", "ConfirmPassword"),
+     }
+     );
 
     this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data;});
     this.user.id = this.currentUser.id ;
@@ -100,7 +122,7 @@ export class ProfileComponent implements OnInit {
             this.erreur = true;
             setTimeout(() => {
               this.erreur = false;
-            }, 7000); 
+            }, 7000);
           }
         );
 
@@ -177,4 +199,64 @@ export class ProfileComponent implements OnInit {
         }
        );
    }
+   UpdatePasswordUser()
+{
+    
+    this.Password.email=this.user.email;
+    this.Password.password=this.PasswordForm.value.OldPassword;
+    this.long=this.PasswordForm.value.NewPassword.length;
+    console.log(this.long)
+   if(!this.PasswordForm.value.NewPassword || !this.PasswordForm.value.OldPassword ||!(this.PasswordForm.value.NewPassword===this.PasswordForm.value.ConfirmPassword)||!(this.long>4))
+ {this.faute = true;
+            setTimeout(() => {
+              this.faute= false;
+            }, 5000);
+ }
+  else
+  {
+    this.authService.ModifierPassword(this.Password).subscribe(
+      (authenticated: boolean) => {
+        if (authenticated) {
+          console.log('Utilisateur authentifié');
+
+          this.authService.changerMotDePasse(this.user.id,this.PasswordForm.value.NewPassword).subscribe(
+            (exist: boolean) => {
+              if (exist)
+              {
+                this.updatedPassword=true;
+                setTimeout(() => {
+                  this.updatedPassword = false;
+                }, 5000);
+
+                } else {
+
+                  this.changerPassword=true;
+                  console.log(this.changerPassword);
+                    setTimeout(() => {
+                      this.changerPassword = false;
+                    }, 5000);
+                }
+       },
+          )
+        }
+      },
+      (error) => {
+        console.error('Erreur lors de l\'authentification', error);
+        this.changerPassword=true;
+
+                    setTimeout(() => {
+                      this.changerPassword = false;
+                    }, 5000);
+      }
+    );
+  }
+}
+closeModal(){
+  this.PasswordForm.reset();
+  this.showModalPassword = false;
+  
+ }
+ openModal(){
+  this.showModalPassword = true;
+ }
 }

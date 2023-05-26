@@ -72,5 +72,10 @@ export class AuthService {
   getDisciplineByUserId (id : any ) {
    return this.http.get(this.InscriURL + "/users/" + id + "/disciplines") ;
   }
-
+  changerMotDePasse(Id:number ,NewPassword:any) :Observable<boolean>
+  {return this.http.get<boolean> (this.userURL + "/ChangerPassword/"+ Id + "/" +NewPassword)}
+  
+  ModifierPassword(loginRequest: any): Observable<boolean> {
+    return this.http.post<boolean>(this.userURL+"/ModifierPassword", loginRequest);
+  }
 }
