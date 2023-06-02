@@ -5,11 +5,12 @@
     <div class="post-box">
       <div class="post-img"><img  src="{{this.eventService.host+'/api/Imgevents/'+eventInput.id}}"  class="img-fluid" alt=""></div>
       <div class="meta">
-        <span class="post-date">Date de l'évènement : </span>
-        <span class="post-author">{{eventInput.date}}</span>
+        <span class="post-date">Date de l'événement :  </span>
+        <span class="post-author">{{eventInput.date}} à {{eventInput.heure}}</span>
       </div>
+      
       <h3 class="post-title">{{eventInput.titre}}</h3>
-      <p>{{eventInput.description}}</p>
+      
       <a (click)="goToDisplay(eventInput.id)" class="readmore stretched-link"><span>consulter</span><i class="bi bi-arrow-right"></i></a>
     </div>
   </div>
