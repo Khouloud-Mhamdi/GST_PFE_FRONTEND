@@ -1,49 +1,38 @@
 <section id="hero-animated" class="hero-animated d-flex align-items-center">
-    <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
-      <h2> Evèn<span>ement  </span></h2>
-    </div>
-  </section>
-  <section id="faq" class="faq">
-    <div class="container-fluid" data-aos="fade-up">
+  <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
+    <h2>Événement<span></span></h2>
+  </div>
+</section>
 
-      <div class="row">
-
-        <div class="col-lg-12 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1" id="test">
-
-          <div class="content px-xl-5">
-            <br>
-            <br>
-            <h3>Decouvrez notre nouveau évènement : <strong>{{event.titre}}</strong> </h3>
-            <h4>Notre évenement aura lieu le <strong style="color: rgb(18, 47, 95);"> {{event.date}} </strong> </h4>
-            
-          </div>
-
-          <div class="accordion accordion-flush px-xl-12" id="faqlist">
-
-            <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
-              <h3 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-content-1">
-                  <i class="bi bi-question-circle question-icon"></i>
-                  A propos cet évènement 
-                </button>
-              </h3>
-              <div id="faq-content-1" class="accordion-collapse collapse" data-bs-parent="#faqlist">
-                <div class="accordion-body">
-                  {{event.description}}
-                </div>
-              </div>
-            </div><!-- # Faq item-->
-
-            
-
-
-          </div>
-
+<section id="faq" class="faq">
+  <div class="container-fluid" data-aos="fade-up">
+    <div class="row">
+      <div class="col-lg-12 d-flex flex-column justify-content-center align-items-stretch order-2 order-lg-1" id="test">
+        <div class="content px-xl-5">
+          <br>
+          <br>
+          <h3>Decouvrez notre nouvel évènement : <strong style="color: rgb(18, 47, 95);">{{event.titre}}</strong></h3>
+          <h4>Notre évènement aura lieu le <strong style="color: rgb(18, 47, 95);">{{event.date}}</strong> à <strong style="color: rgb(18, 47, 95);">{{event.heure}}</strong></h4>
         </div>
-
-        <!--<div class="col-lg-5 align-items-stretch order-1 order-lg-2 img" style='background-image: url("assets/photosGST/event2.jpg");'>&nbsp;</div>-->
-        <div class="post-img"><img  src="{{this.eventService.host+'/api/Imgevents/'+event.id}}"  class="img-fluid" alt="image"></div>
+        <div class="accordion accordion-flush px-xl-12" id="faqlist">
+          <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+            <h3 class="accordion-header">
+            
+                <i class="bi bi-question-circle question-icon"></i>
+                
+            </h3>
+            <br> 
+            <br>
+                
+              <div class="accordion-body text-center">
+                <p>A propos cet événement </p>
+                <p><strong>{{event.description}}</strong></p>
+              </div>
+           
+          </div>
+        </div>
       </div>
-
+      <div class="post-img"><img src="{{this.eventService.host+'/api/Imgevents/'+event.id}}" class="img-fluid" alt="image"></div>
     </div>
-  </section>
+  </div>
+</section>

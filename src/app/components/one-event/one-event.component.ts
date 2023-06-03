@@ -19,6 +19,7 @@ export class OneEventComponent implements OnInit {
     description : '' ,
     lieu : '' ,
     date : '' ,
+    heure : '' , 
     nb_consultation: 0
   }
 
@@ -39,6 +40,7 @@ export class OneEventComponent implements OnInit {
       this.dataEvent.lieu = this.event.lieu;
       this.dataEvent.description = this.event.description;
       this.dataEvent.date = this.event.date;
+      this.dataEvent.heure = this.event.heure ; 
       this.dataEvent.nb_consultation = this.event.nb_consultation + 1;
 
       this.eventService.updatEvent(this.dataEvent).subscribe((data) => {
