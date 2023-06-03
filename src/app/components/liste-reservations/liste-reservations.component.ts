@@ -69,6 +69,7 @@ export class ListeReservationsComponent implements OnInit {
     this.reservationService.getReservtionsByAdherent(this.currentUser.id).subscribe(data=>{
 
       this.reservations=data;
+      this.Pagination();
     })
   });this.showConfirmationDialog = false; }
   openConfirmationDialog(id : any ){

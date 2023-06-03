@@ -38,7 +38,7 @@
               <form [formGroup]="PasswordForm">
 
                 <div class="modal-body">
-        
+
                   <div class="form-group">
                     <label for="exampleFormControlInput1">Ancien mot de passe <span class="tx-danger">*</span></label>
                     <input type="password" class="form-control" formControlName="OldPassword" id="exampleFormControlInput1" placeholder="Entrer votre ancien mot de passe " >
@@ -46,8 +46,8 @@
                       PasswordForm.controls['OldPassword'].touched || PasswordForm.controls['OldPassword'].dirty
                     )">
                          <div *ngIf ="PasswordForm.controls['OldPassword'].errors?.['required']" class="red"> Ce champ est obligatoire  </div>
-        
-        
+
+
                     </div>
                   </div>
                   <div class="form-group">
@@ -58,7 +58,7 @@
                     )">
                          <div *ngIf ="PasswordForm.controls['NewPassword'].errors?.['required']" class="red"> Ce champ est obligatoire  </div>
                          <div  *ngIf ="PasswordForm.controls['NewPassword'].errors?.['minlength']" class="red"> Au moins 5 caractéres  </div>
-        
+
                     </div>
                   </div>
                    <div class="form-group">
@@ -71,22 +71,22 @@
                          <div *ngIf="PasswordForm.controls['ConfirmPassword'].errors?.['noMatch']" class="red">
                           Le mot de passe et sa confirmation ne correspondent pas.
                         </div>
-        
+
                     </div>
                   </div>
-        
+
                 </div>
               </form>
-             
+
             </div>
             <div class="modal-footer">
-              
+
               <button class="btn btn-primary confirm-button" (click)=" UpdatePasswordUser()">Modifier</button>
               <button class="btn btn-secondary cancel-button" (click)="closeModal()">Annuler</button>
             </div>
           </div>
         </div>
-        
+
       </div>
     </div>
   </div>
@@ -133,7 +133,7 @@
                         <br>
 
                          <div  *ngIf=" afficheDiscipline">
-                        <label for="discipline">Disciplines auxquelles vous etes inscrit : </label>
+                        <label for="discipline">Les disciplines auxquelles vous êtes inscrit : </label>
                         <br>
                         <br>
                         <div class="row">
@@ -150,8 +150,8 @@
 
                         <br>
                         <button type="submit" class="btn btn-primary" (click)="openConfirmationDialog()">Enregistrer</button>
-                        <button   class="btn btn-info"  (click)="openModal()">Modifier mot de passe  </button>
-                       
+                        <button   class="btn btn-info"  (click)="openModal()" style="margin-left:50px">Modifier mot de passe  </button>
+
                     </form>
                 </div>
             </div>
@@ -163,7 +163,7 @@
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
-      <div class="modal-header" style="background-color: #00b894;">
+      <div class="modal-header" style="background-color: rgb(144, 204, 75);">
         <h5 class="modal-title" id="exampleModalLabel" style="color: white;">Modifier mot de passe</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
