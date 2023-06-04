@@ -46,7 +46,7 @@ export class SignupPageComponent implements OnInit {
       console.log("controle saisie",this.valid);
       setTimeout(() => {
         this.valid = false;
-      }, 3000);
+      }, 5000);
 
   }
     else{
@@ -57,7 +57,7 @@ export class SignupPageComponent implements OnInit {
 
             setTimeout(() => {
               this.erreur = false;
-            }, 4000);}
+            }, 5000);}
           }
 
       )
