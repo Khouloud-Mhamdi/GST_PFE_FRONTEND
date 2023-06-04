@@ -15,6 +15,7 @@ export class SelectionTerrainReservationComponent implements OnInit {
   constructor(private titleService: Title ,private reservationService : ReservationService ,private router: Router) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.titleService.setTitle('GST-Réserver un terrain');
   }
   passer() {

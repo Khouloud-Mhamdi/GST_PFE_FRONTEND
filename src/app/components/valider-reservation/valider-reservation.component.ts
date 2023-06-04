@@ -11,6 +11,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
 })
 export class ValiderReservationComponent implements OnInit {
   confirm = false ; 
+  afficheButton = true ; 
   showConfirmationDialog = false ; 
   user : any ; 
   reservation = {
@@ -23,6 +24,9 @@ export class ValiderReservationComponent implements OnInit {
   constructor(private titleService: Title,private router : Router , private reservationService : ReservationService  , private token : TokenStorageService) { }
   
   ngOnInit(): void {
+    window.scrollTo(0, 0);
+    this.afficheButton = true ; 
+    window.scrollTo(0, 0);
     this.titleService.setTitle('GST-Réserver un terrain');
     let objStr = sessionStorage.getItem('reservation');
     if (objStr !== null) {
@@ -50,10 +54,11 @@ export class ValiderReservationComponent implements OnInit {
         (data) => {
           console.log('Reservation ajouté avec succée!  ', data);
           this.confirm = true ; 
+          this.afficheButton = false ; 
           setTimeout(() => {
             this.confirm = false  ; 
-            this.router.navigate(["/selection"]); 
-          }, 6000);
+           // this.router.navigate(["/selection"]); 
+          }, 3000);
         },(err) => {
           console.log("here error from BE", err);
         }

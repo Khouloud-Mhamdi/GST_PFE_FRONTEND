@@ -12,6 +12,7 @@ export class AproposPageComponent implements OnInit {
 
   ngOnInit(): void {
     this.titleService.setTitle('GST-A propos');
+    window.scrollTo(0, 0);
   }
 
 }

@@ -43,8 +43,8 @@
           <p class="card-text">De <strong>{{horaire.hdebut}}</strong>  à <strong>{{horaire.hfin}}</strong></p>
           </div>
           <div class="text-center">
-            <button class="btn btn-primary" (click)="openConfirmationDialog()">Confirmer la réservation</button>
-            <button type="button" class="btn btn-secondary ml-2" style="margin-left:10px ;" (click)="annuler()">Annuler</button>
+            <button  *ngIf="afficheButton" class="btn btn-primary" (click)="openConfirmationDialog()">Confirmer la réservation</button>
+            <button type="button" class="btn btn-secondary ml-2" style="margin-left:10px ;" (click)="annuler()">Retour</button>
           </div>
 
         </div>

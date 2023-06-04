@@ -10,6 +10,7 @@ import { TokenStorageService } from 'src/app/services/token-storage.service';
   styleUrls: ['./liste-reservations.component.css']
 })
 export class ListeReservationsComponent implements OnInit {
+  vide = true ; 
   currentUser: any;
   reservations:any;
   idUser :any;
@@ -22,11 +23,15 @@ export class ListeReservationsComponent implements OnInit {
   constructor(private titleService: Title,private token: TokenStorageService,  private router : Router ,private reservationService : ReservationService) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.titleService.setTitle('GST-Liste des réservations');
     this.currentUser = this.token.getUser();
     this.reservationService.getReservtionsByAdherent(this.currentUser.id).subscribe(data=>{
 
       this.reservations=data;
+      if (this.reservations.length==0) {
+        this.vide = false ; 
+      }
       this.Pagination();
     })
 

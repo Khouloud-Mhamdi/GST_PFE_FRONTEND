@@ -110,7 +110,7 @@ export class ReservationComponent implements OnInit {
 
     }
   ngOnInit(): void {
-
+    window.scrollTo(0, 0);
 
     this.titleService.setTitle('GST-Réserver un terrain');
     console.log(this.horaires) ;

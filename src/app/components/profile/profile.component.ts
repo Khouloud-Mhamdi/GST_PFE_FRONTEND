@@ -34,6 +34,7 @@ export class ProfileComponent implements OnInit {
   constructor(private titleService: Title,private token: TokenStorageService , private authService : AuthService , private router : Router,private formBuilder :FormBuilder) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.titleService.setTitle('GST-Profil');
     this.currentUser = this.token.getUser();
     this.PasswordForm= this.formBuilder.group({
@@ -115,7 +116,7 @@ export class ProfileComponent implements OnInit {
             this.update = true;
             setTimeout(() => {
               this.update = false;
-            }, 7000);
+            }, 10000);
           },
           (err) => {
             console.log('probleme !!! ', err);
@@ -140,7 +141,7 @@ export class ProfileComponent implements OnInit {
 
     const nomInput = document.getElementById("nom") as HTMLInputElement;
     console.log(nomInput);
-    const regex =/^[a-zA-Z]{3,}$/ ;
+    const regex =/^[a-zA-Z\s]{3,}$/ ;
     if (!regex.test(this.user.nom)) {
       nomInput.classList.add("invalid");
 
@@ -154,7 +155,7 @@ export class ProfileComponent implements OnInit {
 
     const nomInput = document.getElementById("prenom") as HTMLInputElement;
 
-    const regex =/^[a-zA-Z]{3,}$/ ;
+    const regex =/^[a-zA-Z\s]{3,}$/ ;
     if (!regex.test(this.user.prenom)) {
       nomInput.classList.add("invalid");
 

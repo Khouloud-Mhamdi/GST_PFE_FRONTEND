@@ -26,7 +26,7 @@ export class ForgotPasswordComponent implements OnInit {
   private tokenStorage: TokenStorageService, private router: Router) { }
 
   ngOnInit(): void {
-
+    window.scrollTo(0, 0);
     this.titleService.setTitle('GST-Mot de passe oublié');
     this.ForgetPasswordForm = this.formBuilder.group({
       email : ["", [Validators.email,Validators.required]]

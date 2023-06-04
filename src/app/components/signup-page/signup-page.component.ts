@@ -23,6 +23,7 @@ export class SignupPageComponent implements OnInit {
   constructor(private titleService: Title , private formBuilder : FormBuilder , private router: Router, private authService: AuthService) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.titleService.setTitle('GST-Créer compte');
     this.signupForm = this.formBuilder.group({
       firstName: ["", [Validators.required, Validators.minLength(3)]],
@@ -40,7 +41,7 @@ export class SignupPageComponent implements OnInit {
     /*console.log("test : ", this.signupForm.value.prenom)
    this.signupForm.reset();
    alert("compte crée avec succée ! ");*/
-   if((!this.controleSaisieNom())||(!this.controleSaisiePrénom())||(!this.controleSaisieEmail()))
+   if((!this.controleSaisieNom())||(!this.controleSaisiePrénom())||(!this.controleSaisieEmail())||(!this.signupForm.value.confirm))
     {this.valid=true;
       console.log("controle saisie",this.valid);
       setTimeout(() => {

@@ -10,6 +10,7 @@ export class HandballPageComponent implements OnInit {
   constructor(private titleService: Title) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.titleService.setTitle('GST-Disciplines | Handball');
   }
 

@@ -12,6 +12,7 @@ export class HomeComponent implements OnInit {
   constructor(private titleService: Title , public eventService : EventService) { }
 
   ngOnInit(): void {
+    window.scrollTo(0, 0);
     this.titleService.setTitle('GST-Acceuil');
     this.getData() ;
   }

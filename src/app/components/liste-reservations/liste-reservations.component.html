@@ -1,6 +1,7 @@
 <section id="hero-animated" class="hero-animated d-flex align-items-center">
   <div class="container d-flex flex-column justify-content-center align-items-center text-center position-relative" data-aos="zoom-out">
     <h2>Mes <span>Réservations</span></h2>
+    <p *ngIf="!vide"  class="alerte-texte">Aucune réservation n'est effectuée ! </p>
   </div>
 </section>
 <!-- Alerte de confirmation -->
@@ -40,7 +41,8 @@
           </div>
         </div>
       </div>
-      <div class="pagination">
+      
+      <div class="pagination" *ngIf="vide">
         <button class="prev" [disabled]="currentPage == 1" (click)="prevPage()">Précédent</button>
 
         <ng-container *ngFor="let page of pages">
@@ -48,8 +50,9 @@
         </ng-container>
 
         <button class="next" [disabled]="currentPage == totalPages" (click)="nextPage()">Suivant</button>
+       
       </div>
-
+   
     </div>
   </div>
 </div>

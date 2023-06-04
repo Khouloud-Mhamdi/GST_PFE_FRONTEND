@@ -59,10 +59,11 @@ export class InscriptionDisciplineComponent implements OnInit {
   stegiste="";
   showMatricule = false ;
   ControleInputStegiste=false;
+  afficherProfession = true ; 
   constructor( private titleService: Title ,private disciplineService : DisciplineService , private token: TokenStorageService ,private authService : AuthService , private router : Router , private formBuilder :FormBuilder  ) { }
 
   ngOnInit(): void { this.titleService.setTitle('GST-Inscription dans une discipline');
-
+  window.scrollTo(0, 0);
     this.currentUser = this.token.getUser();
     this.authService.getCurrentUserById(this.currentUser.id).subscribe((data) => {this.user = data;  } );
        this.getAllclubs();
@@ -128,6 +129,7 @@ export class InscriptionDisciplineComponent implements OnInit {
       this.ValeurTelephone =this.user.telephone ;
       this.ValeurMatricule=this.user.matricule;
       this.alerteRelation=false;
+      this.afficherProfession = true ; 
     }
       if ((this.selectedRelation ==='enfant'))
     {
@@ -139,6 +141,7 @@ export class InscriptionDisciplineComponent implements OnInit {
 	  this.ValeurDateNaissance = '';
       this.ValeurEmail= this.user.email;
       this.alerteRelation=false;
+      this.afficherProfession = true ; 
     }
     if ((this.selectedRelation ==='conjoint'))
     {
@@ -149,6 +152,7 @@ export class InscriptionDisciplineComponent implements OnInit {
 	  this.ValeurTelephone = '';
 	  this.ValeurLieuNaissance = '';
 	  this.ValeurDateNaissance = '';
+    this.afficherProfession = false ; 
       this.alerteRelation=false;
 
     }
@@ -162,7 +166,7 @@ export class InscriptionDisciplineComponent implements OnInit {
 
     this.selectedStegiste = event.target.value;
 
-    if (this.selectedStegiste !== undefined && this.selectedStegiste === 'stegiste') {
+    if (this.selectedStegiste !== undefined && this.selectedStegiste === 'Agent Steg') {
       this.showMatricule = true;
       this.alerteStegiste=false;
     } else {
@@ -239,7 +243,7 @@ export class InscriptionDisciplineComponent implements OnInit {
     let verif =true;
     console.log(this.selectedStegiste)
     this.alerteMatricule=false;
-    if((this.selectedStegiste==='stegiste')||(this.stegiste==='stegiste')){
+    if((this.selectedStegiste==='Agent Steg')||(this.stegiste==='Agent Steg')){
     const nomInput = document.getElementById("matricule") as HTMLInputElement;
     console.log(this.selectedStegiste)
 
@@ -328,7 +332,7 @@ export class InscriptionDisciplineComponent implements OnInit {
       console.log("erreur grave");
       setTimeout(() => {
         this.valid = false;
-      }, 8000);
+      }, 5000);
   }
 
     else{
@@ -358,7 +362,7 @@ export class InscriptionDisciplineComponent implements OnInit {
         this.valid=true;
         setTimeout(() => {
           this.valid = false;
-        }, 8000); // 3000 ms = 3 secondes
+        }, 5000); // 3000 ms = 3 secondes
       }
       );
       this.Inscription ={
@@ -380,7 +384,7 @@ export class InscriptionDisciplineComponent implements OnInit {
           this.valid=true;
           setTimeout(() => {
             this.valid = false;
-          }, 8000); // 3000 ms = 3 secondes
+          }, 5000); // 3000 ms = 3 secondes
         }
         );
 
@@ -410,7 +414,7 @@ export class InscriptionDisciplineComponent implements OnInit {
             this.valid=true;
             setTimeout(() => {
               this.valid = false;
-            }, 8000); // 3000 ms = 3 secondes
+            }, 5000); // 3000 ms = 3 secondes
           }
           );
     },
@@ -418,19 +422,22 @@ export class InscriptionDisciplineComponent implements OnInit {
        this.valid=true;
         setTimeout(() => {
           this.valid = false;
-        }, 8000); // 3000 ms = 3 secondes
+        }, 5000); // 3000 ms = 3 secondes
       }
 
 
     );
 
-     if (this.user.type===null )
-    {this.userUpdateFamilly = {
+    
+    this.userUpdateFamilly = {
       id: this.user.id,
       nom:  this.user.nom,
       prenom: this.user.prenom,
       email:  this.user.email,
-
+      adresse : this.user.adressse , 
+      telephone : this.user.telephone , 
+      date_naissance : this.user.date_naissance , 
+      lieu_naissance : this.user.lieu_naissance , 
       matricule: this.addFamilleForm.value.matricule,
       profession: this.addFamilleForm.value.profession,
       type: this.addFamilleForm.value.type
@@ -443,9 +450,9 @@ export class InscriptionDisciplineComponent implements OnInit {
         this.valid=true;
         setTimeout(() => {
           this.valid = false;
-        }, 8000); // 3000 ms = 3 secondes
+        }, 5000); // 3000 ms = 3 secondes
       }
-      );}
+      );
  }};
   this.closeConfirmationDialog();
   window.scrollTo(0, 0);

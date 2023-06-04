@@ -11,8 +11,10 @@ export class EventPageComponent implements OnInit {
   constructor(private titleService: Title , public eventService : EventService  ) { }
 
   ngOnInit(): void {
+
     this.titleService.setTitle('GST-Evénements');
     this.getData() ;
+    window.scrollTo(0, 0);
   }
   getData() {
     this.eventService.getAll().subscribe(
